@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { UsersComponent } from './users/users.component';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import {MatTableModule} from '@angular/material/table';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import {MatTableModule} from '@angular/material/table';
     BrowserModule,
     BrowserAnimationsModule,
     MatTableModule,
+    MatButtonModule,
     AppRoutingModule,
     HttpClientModule
   ],
