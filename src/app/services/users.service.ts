@@ -10,12 +10,19 @@ import { catchError, map, tap } from 'rxjs/operators';
 export class UsersService {
 
   private usersUrl = '//localhost:9001/users';
+  private userUrl = '//localhost:9001/user';
 
   constructor(private http: HttpClient) { }
 
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.usersUrl).pipe(
       catchError(this.handleError('getUsers', []))
+    );
+  }
+
+  getUser(id: number): Observable<User> {
+    return this.http.get<User>(`${this.userUrl}/${id}`).pipe(
+      catchError(this.handleError<User>(`getUser id=${id}`))
     );
   }
 

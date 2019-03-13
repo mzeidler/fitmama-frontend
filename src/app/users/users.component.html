@@ -19,7 +19,9 @@
 
   <ng-container matColumnDef="username">
     <mat-header-cell *matHeaderCellDef> Username </mat-header-cell>
-    <mat-cell *matCellDef="let user"> {{user.username}} </mat-cell>
+    <mat-cell *matCellDef="let user" > 
+      <a routerLink="/user/{{user.id}}">{{user.username}} </a>
+    </mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="email">

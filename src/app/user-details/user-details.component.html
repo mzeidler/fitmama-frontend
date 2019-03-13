@@ -1,0 +1,61 @@
+
+<div *ngIf="user">
+
+  <h2>{{user.firstName | uppercase}} Details</h2>
+
+  <form class="user-form">
+      <mat-form-field class="user-full-width">
+          <input [(ngModel)]="user.firstName" matInput name="firstName" placeholder="First name">
+      </mat-form-field>
+
+      <mat-form-field class="user-full-width">
+          <input [(ngModel)]="user.lastName" matInput name="lastName" placeholder="Last name">
+      </mat-form-field>
+
+      <mat-form-field class="user-full-width">
+          <input [(ngModel)]="user.username" matInput name="username" placeholder="username">
+      </mat-form-field>
+
+      <mat-form-field class="user-full-width">
+          <input [(ngModel)]="user.address" matInput name="address" placeholder="Address">
+      </mat-form-field>
+
+      <mat-form-field class="user-full-width">
+          <input [(ngModel)]="user.city" matInput name="city" placeholder="City">
+      </mat-form-field>
+
+      <mat-form-field class="user-full-width">
+          <input [(ngModel)]="user.zipcode" matInput name="zipcode" placeholder="Zipcode">
+      </mat-form-field>
+
+      <mat-form-field class="user-full-width">
+          <input [(ngModel)]="user.mobile" matInput name="mobile" placeholder="Mobile">
+      </mat-form-field>
+
+      <mat-form-field class="user-full-width">
+          <input [(ngModel)]="user.email" matInput name="email" placeholder="Email">
+      </mat-form-field>
+
+      <mat-form-field class="user-full-width">
+          <input [(ngModel)]="user.gender" matInput name="gender" placeholder="Gender">
+      </mat-form-field>
+
+      <mat-form-field class="user-full-width">
+          <input [(ngModel)]="user.height" matInput name="height" placeholder="Height" >
+          <label matSuffix>cm</label>
+      </mat-form-field>
+
+      <!--
+      <mat-form-field class="user-full-width">
+          <input matInput [matDatepicker]="picker" 
+                placeholder="Birth date"
+                [(ngModel)]="user.birthDate"
+                name="birthDate"
+                 >
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+-->
+  </form>
+
+</div>
