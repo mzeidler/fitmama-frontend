@@ -3,16 +3,19 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { User } from '../model/user';
 import { catchError, map, tap } from 'rxjs/operators';
+import {environment} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsersService {
 
-  private usersUrl = '//localhost:9001/users';
-  private userUrl = '//localhost:9001/user';
+  private usersUrl = `//${environment.resturl}:9001/users`;
+  private userUrl = `//${environment.resturl}:9001/user`;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { 
+
+  }
 
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.usersUrl).pipe(
