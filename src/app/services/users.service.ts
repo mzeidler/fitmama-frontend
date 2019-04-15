@@ -10,8 +10,8 @@ import {environment} from '../../environments/environment';
 })
 export class UsersService {
 
-  private usersUrl = `//${environment.resturl}:9001/users`;
-  private userUrl = `//${environment.resturl}:9001/user`;
+  private usersUrl = `//${environment.resturl}:9001/api/users`;
+  private userUrl = `//${environment.resturl}:9001/api/user`;
 
   constructor(private http: HttpClient) { 
 
