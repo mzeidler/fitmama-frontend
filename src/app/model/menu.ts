@@ -1,5 +1,9 @@
+import { User } from './user';
+import { MenuDay } from './menuday';
+
 export class Menu {
     id: number;
-    groupId: number;
-    content: string;
+    name: string;
+    menuDays: MenuDay[];
+    users: User[];
 }
