@@ -1,3 +1,24 @@
+
 <p>
-  menus works!
+    <button mat-raised-button (click)="getMenus()">Load Menus</button>&nbsp;
+    <button mat-raised-button (click)="addMenu()">Add Menu</button>
+</p>
+
+<p>
+    <mat-accordion class="example-headers-align">
+        <div *ngFor="let menu of menus">
+            <p>
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            <p><b>{{menu.name}}</b></p>
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            <p>Click to edit</p>
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                </mat-expansion-panel>
+            </p>
+        </div>
+    </mat-accordion>
 </p>
