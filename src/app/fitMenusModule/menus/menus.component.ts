@@ -37,9 +37,13 @@ export class MenusComponent implements OnInit {
       this.name = result;
 
       if (this.name) {
-        let menu = new Menu();
-        menu.name = this.name;
-        this.menus.push(menu);
+        let newMenu = new Menu();
+        newMenu.name = this.name;
+
+        this.menusService.addMenu(newMenu)
+        .subscribe(menu => {
+          this.menus.push(menu);
+        });
       }
     });
 

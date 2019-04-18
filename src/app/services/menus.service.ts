@@ -5,6 +5,10 @@ import {environment} from '../../environments/environment';
 import { Menu } from '../model/menu';
 import { catchError, map, tap } from 'rxjs/operators';
 
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
+
 @Injectable({
   providedIn: 'root'
 })
@@ -16,7 +20,13 @@ export class MenusService {
 
   getMenus(): Observable<Menu[]> {
     return this.http.get<Menu[]>(this.menusUrl).pipe(
-      catchError(this.handleError('geMenus', []))
+      catchError(this.handleError('getMenus', []))
+    );
+  }
+
+  addMenu (menu: Menu): Observable<Menu> {
+    return this.http.post<Menu>(this.menusUrl + "/add", menu, httpOptions).pipe(
+      catchError(this.handleError<Menu>('addMenu'))
     );
   }
 
