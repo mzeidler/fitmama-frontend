@@ -6,9 +6,10 @@ import { MatButtonModule } from '@angular/material';
 import { FitMenusModuleRoutingModule } from './fit-menus-module-routing.module';
 import { MenusComponent } from './menus/menus.component';
 import { MenuDetailsComponent } from './menu-details/menu-details.component';
+import { AddMenuDialogComponent } from './add-menu-dialog/add-menu-dialog.component';
 
 @NgModule({
-  declarations: [MenusComponent, MenuDetailsComponent],
+  declarations: [MenusComponent, MenuDetailsComponent, AddMenuDialogComponent],
   imports: [
     CommonModule,
     FitMenusModuleRoutingModule,
