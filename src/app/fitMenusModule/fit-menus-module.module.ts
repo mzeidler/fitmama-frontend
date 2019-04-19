@@ -13,9 +13,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { DeleteMenuDialogComponent } from './delete-menu-dialog/delete-menu-dialog.component';
+import { EditMenuUsersDialogComponent } from './edit-menu-users-dialog/edit-menu-users-dialog.component';
 
 @NgModule({
-  declarations: [MenusComponent, MenuDetailsComponent, AddMenuDialogComponent],
+  declarations: [MenusComponent, MenuDetailsComponent, AddMenuDialogComponent, DeleteMenuDialogComponent, EditMenuUsersDialogComponent],
   imports: [
     CommonModule,
     FormsModule,
