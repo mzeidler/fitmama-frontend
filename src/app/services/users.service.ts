@@ -4,6 +4,7 @@ import { Observable, of } from 'rxjs';
 import { User } from '../model/user';
 import { catchError, map, tap } from 'rxjs/operators';
 import {environment} from '../../environments/environment';
+import { Users } from '../model/users';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,12 @@ export class UsersService {
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.usersUrl).pipe(
       catchError(this.handleError('getUsers', []))
+    );
+  }
+
+  getUsersShort(): Observable<Users> {
+    return this.http.get<Users>(`${this.usersUrl}/short`).pipe(
+      catchError(this.handleError<Users>('getUsersShort'))
     );
   }
 
