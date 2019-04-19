@@ -11,6 +11,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [MenusComponent, MenuDetailsComponent, AddMenuDialogComponent],
@@ -22,7 +24,9 @@ import { MatInputModule } from '@angular/material';
     MatButtonModule,
     MatDialogModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatIconModule,
+    MatTooltipModule
   ],
   entryComponents: [
     AddMenuDialogComponent

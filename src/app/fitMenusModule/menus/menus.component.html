@@ -1,7 +1,13 @@
 
 <p>
-    <button mat-raised-button (click)="getMenus()">Load Menus</button>&nbsp;
-    <button mat-raised-button (click)="addMenu()">Add Menu</button>&nbsp;
+    <button mat-icon-button>
+        <mat-icon aria-label="Refresh" (click)="getMenus()" matTooltip="Učitaj menije">autorenew</mat-icon>
+    </button>
+
+    <button mat-icon-button>
+        <mat-icon aria-label="Add" (click)="addMenu()" matTooltip="Dodaj meni">add_circle_outline</mat-icon>
+    </button>
+
 </p>
 
 <p>
@@ -14,9 +20,11 @@
                             <p><b>{{menu.name}}</b></p>
                         </mat-panel-title>
                         <mat-panel-description>
-                            <p>Click to edit</p>
+                            <p></p>
+                            <p>Click to open</p>                            
                         </mat-panel-description>
                     </mat-expansion-panel-header>
+                    <app-menu-details [menu]="menu"></app-menu-details>                    
                 </mat-expansion-panel>
             </p>
         </div>
