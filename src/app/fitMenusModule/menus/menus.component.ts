@@ -62,7 +62,7 @@ export class MenusComponent implements OnInit {
   }
 
   updateMenuUsers(menu: Menu) {
-
+    this.menusService.updateUsers(menu).subscribe();
   }
 
 }

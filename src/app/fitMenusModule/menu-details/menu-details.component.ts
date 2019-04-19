@@ -3,6 +3,8 @@ import { Menu } from 'src/app/model/menu';
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { AddMenuDialogComponent } from '../add-menu-dialog/add-menu-dialog.component';
 import { DeleteMenuDialogComponent } from '../delete-menu-dialog/delete-menu-dialog.component';
+import { EditMenuUsersDialogComponent } from '../edit-menu-users-dialog/edit-menu-users-dialog.component';
+import { User } from 'src/app/model/user';
 
 @Component({
   selector: 'app-menu-details',
@@ -13,6 +15,10 @@ export class MenuDetailsComponent implements OnInit {
 
   @Input()
   menu: Menu;
+
+  @Input()
+  users: User[];
+  
   name: string;
 
   @Output() 
@@ -67,6 +73,50 @@ export class MenuDetailsComponent implements OnInit {
   }
 
   editUsers() {
-    console.log(`Edit Users for menu ${this.menu.name}`);
+    
+    if (!this.menu.users) {
+      this.menu.users = [];
+    }
+
+    let menuUsers = [];
+
+    this.menu.users.forEach(user => {
+      menuUsers.push(user);
+    });
+
+    let otherUsers = [];
+
+    this.users.forEach(user1 => {
+
+      let found = false;
+      this.menu.users.forEach(menuUser => {
+        if (menuUser.id == user1.id) {
+          found = true;
+        }
+      })
+
+      if (!found) {
+        otherUsers.push(user1);
+      }
+
+    });
+
+    const dialogRef = this.dialog.open(EditMenuUsersDialogComponent, {
+      width: '600px', data: { 
+        menuUsers: menuUsers,
+        otherUsers: otherUsers
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+
+      if (result) {
+        this.menu.users = menuUsers;
+        this.updateUsersRequest.emit(this.menu);
+      }
+
+    }); 
   }
+
+
 }

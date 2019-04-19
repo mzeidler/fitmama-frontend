@@ -36,6 +36,12 @@ export class MenusService {
     );
   }
 
+  updateUsers(menu: Menu): Observable<Menu> {
+    return this.http.post<Menu>(this.menusUrl + "/updateusers", menu, httpOptions).pipe(
+      catchError(this.handleError<Menu>('updateMenuUsers'))
+    );
+  }
+
   deleteMenu(menu: Menu) {
     return this.http.delete(this.menusUrl + "/delete/" + menu.id, httpOptions).subscribe();
   }
