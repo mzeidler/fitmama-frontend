@@ -24,7 +24,12 @@
                             <p>Click to open</p>                            
                         </mat-panel-description>
                     </mat-expansion-panel-header>
-                    <app-menu-details [menu]="menu"></app-menu-details>                    
+                    <app-menu-details 
+                    [menu]="menu"
+                    (deleteRequest)="deleteMenu($event)"
+                    (updateRequest)="updateMenu($event)"
+                    (updateUsersRequest)="updateMenuUsers($event)"
+                    ></app-menu-details>                    
                 </mat-expansion-panel>
             </p>
         </div>

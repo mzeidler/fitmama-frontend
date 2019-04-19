@@ -1,13 +1,13 @@
 
 <div style="float: right">
     <button mat-icon-button>
-        <mat-icon aria-label="Edit" matTooltip="Uredi meni">edit</mat-icon>
+        <mat-icon aria-label="Edit" matTooltip="Uredi meni" (click)="editMenu()">edit</mat-icon>
       </button>
       <button mat-icon-button>
-        <mat-icon aria-label="Remove" matTooltip="Obriši meni">delete_forever</mat-icon>
+        <mat-icon aria-label="Remove" matTooltip="Obriši meni" (click)="deleteMenu()">delete_forever</mat-icon>
       </button> 
       <button mat-icon-button >
-        <mat-icon aria-label="Users" matTooltip="Korisnice">people</mat-icon>
+        <mat-icon aria-label="Users" matTooltip="Korisnice" (click)="editUsers()">people</mat-icon>
       </button>       
 </div>
 <p>

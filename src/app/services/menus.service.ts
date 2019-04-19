@@ -30,6 +30,12 @@ export class MenusService {
     );
   }
 
+  updateMenu(menu: Menu): Observable<Menu> {
+    return this.http.post<Menu>(this.menusUrl + "/update", menu, httpOptions).pipe(
+      catchError(this.handleError<Menu>('updateMenu'))
+    );
+  }
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error);

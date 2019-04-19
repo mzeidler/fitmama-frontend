@@ -46,6 +46,18 @@ export class MenusComponent implements OnInit {
         });
       }
     });
+  }
+
+  updateMenu(menu: Menu) {
+      this.menusService.updateMenu(menu).subscribe();
+  }
+  
+  deleteMenu(menu: Menu) {
 
   }
+
+  updateMenuUsers(menu: Menu) {
+
+  }
+
 }
