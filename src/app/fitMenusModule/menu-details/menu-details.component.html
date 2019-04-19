@@ -7,7 +7,7 @@
         <mat-icon aria-label="Remove" matTooltip="Obriši meni" (click)="deleteMenu()">delete_forever</mat-icon>
       </button> 
       <button mat-icon-button >
-        <mat-icon aria-label="Users" matTooltip="Korisnice" (click)="editUsers()">people</mat-icon>
+        <mat-icon aria-label="Users" matTooltip="Korisnice" (click)="editUsers()" matBadge="{{menu.menuDays.length}}">people</mat-icon>
       </button>       
 </div>
 <p>
