@@ -33,7 +33,9 @@ import { MatBadgeModule } from '@angular/material/badge';
     MatBadgeModule
   ],
   entryComponents: [
-    AddMenuDialogComponent
+    AddMenuDialogComponent,
+    DeleteMenuDialogComponent,
+    EditMenuUsersDialogComponent
   ]
 })
 export class FitMenusModuleModule { }

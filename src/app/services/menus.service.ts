@@ -36,6 +36,10 @@ export class MenusService {
     );
   }
 
+  deleteMenu(menu: Menu) {
+    return this.http.delete(this.menusUrl + "/delete/" + menu.id, httpOptions).subscribe();
+  }
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error);

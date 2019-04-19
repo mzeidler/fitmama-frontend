@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Menu } from 'src/app/model/menu';
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { AddMenuDialogComponent } from '../add-menu-dialog/add-menu-dialog.component';
+import { DeleteMenuDialogComponent } from '../delete-menu-dialog/delete-menu-dialog.component';
 
 @Component({
   selector: 'app-menu-details',
@@ -49,7 +50,20 @@ export class MenuDetailsComponent implements OnInit {
   }
 
   deleteMenu() {
-    console.log(`Delete menu ${this.menu.name}`);
+
+    const dialogRef = this.dialog.open(DeleteMenuDialogComponent, {
+      width: '430px', data: { 
+        title: 'Obriši meni', 
+        menu: this.menu}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+
+      if (result) {
+        this.deleteRequest.emit(this.menu);  
+      }
+
+    }); 
   }
 
   editUsers() {

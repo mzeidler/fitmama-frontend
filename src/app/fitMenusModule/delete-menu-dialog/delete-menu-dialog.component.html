@@ -1,3 +1,10 @@
-<p>
-  delete-menu-dialog works!
-</p>
+<div mat-dialog-title>
+Da li želite obrisati meni {{data.menu.name}}?
+</div>
+
+<div mat-dialog-title *ngIf="data.menu.users && data.menu.users.length > 0">{{data.menu.users.length}} korisnica koristi ovaj meni</div>
+
+<div mat-dialog-actions style="float: right">
+    <button mat-button (click)="onNoClick()">Ne</button>
+    <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Da</button>
+</div>

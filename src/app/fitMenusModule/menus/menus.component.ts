@@ -53,7 +53,8 @@ export class MenusComponent implements OnInit {
   }
   
   deleteMenu(menu: Menu) {
-
+      this.menusService.deleteMenu(menu);
+      this.menus = this.menus.filter(m => m.id != menu.id);
   }
 
   updateMenuUsers(menu: Menu) {
