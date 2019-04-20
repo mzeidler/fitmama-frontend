@@ -102,7 +102,7 @@ export class MenuDetailsComponent implements OnInit {
     });
 
     const dialogRef = this.dialog.open(EditMenuUsersDialogComponent, {
-      width: '600px', data: { 
+      width: '400px', data: { 
         menuUsers: menuUsers,
         otherUsers: otherUsers
       }

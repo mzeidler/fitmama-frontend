@@ -17,6 +17,7 @@ import { DeleteMenuDialogComponent } from './delete-menu-dialog/delete-menu-dial
 import { EditMenuUsersDialogComponent } from './edit-menu-users-dialog/edit-menu-users-dialog.component';
 import { MatBadgeModule } from '@angular/material/badge';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [MenusComponent, MenuDetailsComponent, AddMenuDialogComponent, DeleteMenuDialogComponent, EditMenuUsersDialogComponent],
@@ -32,7 +33,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     MatIconModule,
     MatTooltipModule,
     MatBadgeModule,
-    DragDropModule
+    DragDropModule,
+    MatListModule
   ],
   entryComponents: [
     AddMenuDialogComponent,

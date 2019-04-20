@@ -1,37 +1,33 @@
 <h1 mat-dialog-title>Korisnice menija</h1>
 
 
-
-<div class="example-container">
-    <h2>Meni</h2>
-  
-    <div
+    <p>
+    <span class="mat-body"><b>Tko koristi meni</b></span>
+    
+    <mat-list
       cdkDropList
       #todoList="cdkDropList"
       [cdkDropListData]="data.menuUsers"
       [cdkDropListConnectedTo]="[doneList]"
       class="example-list"
       (cdkDropListDropped)="drop($event)">
-      <div class="example-box" *ngFor="let user of data.menuUsers" cdkDrag>{{user.name}}</div>
-    </div>
-  </div>
+      <mat-list-item class="example-box" *ngFor="let user of data.menuUsers" cdkDrag>{{user.name}}</mat-list-item>
+    </mat-list>
+    </p>
   
-  <div class="example-container">
-    <h2>Ostali</h2>
-  
-    <div
+    <p>
+    <span class="mat-body"><b>Ostali korisnici</b></span>
+    <mat-list
       cdkDropList
       #doneList="cdkDropList"
       [cdkDropListData]="data.otherUsers"
       [cdkDropListConnectedTo]="[todoList]"
       class="example-list"
       (cdkDropListDropped)="drop($event)">
-      <div class="example-box" *ngFor="let user of data.otherUsers" cdkDrag>{{user.name}}</div>
-    </div>
-  </div>
+      <mat-list-item class="example-box" *ngFor="let user of data.otherUsers" cdkDrag>{{user.name}}</mat-list-item>
+    </mat-list>
+    </p>
   
-
-
 
 <div mat-dialog-actions style="float: right">
     <button mat-button (click)="onNoClick()">Odustani</button>
