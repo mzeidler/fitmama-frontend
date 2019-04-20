@@ -1,32 +1,26 @@
 <h1 mat-dialog-title>Korisnice menija</h1>
 
+<div style="width:48%; float:left"
+cdkDropList
+#todoList="cdkDropList"
+[cdkDropListData]="data.menuUsers"
+[cdkDropListConnectedTo]="[doneList]"
+class="example-list"
+(cdkDropListDropped)="drop($event)">
+<button mat-raised-button color="primary" class="example-margin" *ngFor="let user of data.menuUsers" cdkDrag>{{user.name}}</button>
+</div>
 
-    <p>
-    <span class="mat-body"><b>Tko koristi meni</b></span>
-    
-    <mat-list
-      cdkDropList
-      #todoList="cdkDropList"
-      [cdkDropListData]="data.menuUsers"
-      [cdkDropListConnectedTo]="[doneList]"
-      class="example-list"
-      (cdkDropListDropped)="drop($event)">
-      <mat-list-item class="example-box" *ngFor="let user of data.menuUsers" cdkDrag>{{user.name}}</mat-list-item>
-    </mat-list>
-    </p>
-  
-    <p>
-    <span class="mat-body"><b>Ostali korisnici</b></span>
-    <mat-list
-      cdkDropList
-      #doneList="cdkDropList"
-      [cdkDropListData]="data.otherUsers"
-      [cdkDropListConnectedTo]="[todoList]"
-      class="example-list"
-      (cdkDropListDropped)="drop($event)">
-      <mat-list-item class="example-box" *ngFor="let user of data.otherUsers" cdkDrag>{{user.name}}</mat-list-item>
-    </mat-list>
-    </p>
+<div style="width:48%; float:right"
+cdkDropList
+#doneList="cdkDropList"
+[cdkDropListData]="data.otherUsers"
+[cdkDropListConnectedTo]="[todoList]"
+class="example-list"
+(cdkDropListDropped)="drop($event)">
+<button mat-raised-button color="primary" class="example-margin" *ngFor="let user of data.otherUsers" cdkDrag>{{user.name}}</button>
+</div>   
+
+
   
 
 <div mat-dialog-actions style="float: right">
