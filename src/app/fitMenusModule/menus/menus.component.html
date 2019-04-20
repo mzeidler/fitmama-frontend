@@ -4,7 +4,7 @@
         <mat-icon aria-label="Refresh" (click)="getMenus()" matTooltip="Učitaj menije">autorenew</mat-icon>
     </button>
 
-    <button mat-icon-button>
+    <button mat-icon-button *ngIf="menus">
         <mat-icon aria-label="Add" (click)="addMenu()" matTooltip="Dodaj meni">add_circle_outline</mat-icon>
     </button>
 
