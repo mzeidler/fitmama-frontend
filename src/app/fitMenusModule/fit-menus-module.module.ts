@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatButtonModule } from '@angular/material';
-
+import { BrowserModule } from '@angular/platform-browser';
 import { FitMenusModuleRoutingModule } from './fit-menus-module-routing.module';
 import { MenusComponent } from './menus/menus.component';
 import { MenuDetailsComponent } from './menu-details/menu-details.component';
@@ -18,10 +18,22 @@ import { EditMenuUsersDialogComponent } from './edit-menu-users-dialog/edit-menu
 import { MatBadgeModule } from '@angular/material/badge';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatListModule } from '@angular/material/list';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { MenuCalendarComponent } from './menu-calendar/menu-calendar.component';
 
 @NgModule({
-  declarations: [MenusComponent, MenuDetailsComponent, AddMenuDialogComponent, DeleteMenuDialogComponent, EditMenuUsersDialogComponent],
+  declarations: [
+    MenusComponent, 
+    MenuDetailsComponent, 
+    AddMenuDialogComponent, 
+    DeleteMenuDialogComponent, 
+    EditMenuUsersDialogComponent, 
+    MenuCalendarComponent],
   imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
     CommonModule,
     FormsModule,
     FitMenusModuleRoutingModule,
@@ -34,7 +46,11 @@ import { MatListModule } from '@angular/material/list';
     MatTooltipModule,
     MatBadgeModule,
     DragDropModule,
-    MatListModule
+    MatListModule,
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory
+    })
   ],
   entryComponents: [
     AddMenuDialogComponent,
