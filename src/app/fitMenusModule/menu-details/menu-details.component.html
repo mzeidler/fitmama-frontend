@@ -10,6 +10,7 @@
         <mat-icon aria-label="Users" matTooltip="Korisnice" (click)="editUsers()" matBadge="{{menu.users ? menu.users.length : 0}}">people</mat-icon>
       </button>       
 </div>
-<p>
-  menu-details works! {{menu.name}}
-</p>
+
+<div style="width: 60%">
+  <app-menu-calendar [menu]="menu"></app-menu-calendar>
+</div>
