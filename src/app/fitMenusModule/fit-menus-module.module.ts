@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, registerLocaleData } from '@angular/common';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatButtonModule } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
@@ -22,6 +22,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { MenuCalendarComponent } from './menu-calendar/menu-calendar.component';
+import localeHr from '@angular/common/locales/hr';
+
+registerLocaleData(localeHr);
 
 @NgModule({
   declarations: [

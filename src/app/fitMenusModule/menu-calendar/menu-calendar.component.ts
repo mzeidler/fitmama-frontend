@@ -15,6 +15,7 @@ export class MenuCalendarComponent implements OnInit {
   refresh: Subject<any> = new Subject(); 
   viewDate: Date = new Date();
   events: CalendarEvent[];
+  locale: string = 'hr';
 
   private _menu: Menu;
   
