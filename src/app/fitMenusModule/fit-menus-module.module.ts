@@ -22,6 +22,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { MenuCalendarComponent } from './menu-calendar/menu-calendar.component';
+import { MatDividerModule } from '@angular/material/divider';
 import localeHr from '@angular/common/locales/hr';
 
 registerLocaleData(localeHr);
@@ -50,6 +51,7 @@ registerLocaleData(localeHr);
     MatBadgeModule,
     DragDropModule,
     MatListModule,
+    MatDividerModule,
     CalendarModule.forRoot({
       provide: DateAdapter,
       useFactory: adapterFactory
