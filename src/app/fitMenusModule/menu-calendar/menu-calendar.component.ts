@@ -14,8 +14,10 @@ export class MenuCalendarComponent implements OnInit {
 
   refresh: Subject<any> = new Subject(); 
   viewDate: Date = new Date();
+  view: string = "month";
   events: CalendarEvent[];
   locale: string = 'hr';
+  activeDayIsOpen: boolean = true;
 
   private _menu: Menu;
   
@@ -41,4 +43,7 @@ export class MenuCalendarComponent implements OnInit {
 
   ngOnInit() { }
 
+  closeOpenMonthViewDay() {
+    this.activeDayIsOpen = false;
+  }
 }
