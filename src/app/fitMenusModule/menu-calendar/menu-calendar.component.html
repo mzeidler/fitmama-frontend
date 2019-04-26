@@ -36,12 +36,14 @@
       let-tooltipTemplate="tooltipTemplate"
       let-tooltipAppendToBody="tooltipAppendToBody">
       <div class="cal-cell-top" (dblclick)="doubleClick(day)">
+        <!--
         <span class="cal-day-badge" *ngIf="day.badgeTotal > 0">{{ day.badgeTotal }}</span>
+        -->
         <span class="cal-day-number">{{ day.date | calendarDate:'monthViewDayNumber':locale }}</span>
       </div>
       <div class="cal-events" *ngIf="day.events.length > 0" (dblclick)="doubleClick(day)">
+        <mat-icon matTooltip="{{day.events[0].title}}">restaurant_menu</mat-icon>
         <div
-          class="cal-event"
           *ngFor="let event of day.events; trackBy:trackByEventId"
           [style.backgroundColor]="event.color?.primary"
           [ngClass]="event?.cssClass"
