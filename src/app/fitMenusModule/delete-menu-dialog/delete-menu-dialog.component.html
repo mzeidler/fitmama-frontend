@@ -2,7 +2,7 @@
 Da li želite obrisati meni {{data.menu.name}}?
 </div>
 
-<div mat-dialog-title *ngIf="data.menu.users && data.menu.users.length > 0">{{data.menu.users.length}} korisnica koristi ovaj meni</div>
+<div class="mat-body" *ngIf="data.menu.users && data.menu.users.length > 0">{{data.menu.users.length}} korisnica koristi ovaj meni</div>
 
 <div mat-dialog-actions style="float: right">
     <button mat-button (click)="onNoClick()">Ne</button>
