@@ -4,6 +4,8 @@ import { CalendarEvent, CalendarEventTimesChangedEvent } from 'angular-calendar'
 import { mycolors } from '../../const/mycolors';
 import { Subject } from 'rxjs';
 import { MonthViewDay } from 'calendar-utils';
+import { MatDialog } from '@angular/material';
+import { RemoveMenuDayDialogComponent } from '../remove-menu-day-dialog/remove-menu-day-dialog.component';
 
 @Component({
   selector: 'app-menu-calendar',
@@ -22,6 +24,7 @@ export class MenuCalendarComponent implements OnInit {
 
   currentId: string | number;
   currentDay: MonthViewDay;
+  currentEvent: CalendarEvent;
 
   private _menu: Menu;
   
@@ -44,7 +47,7 @@ export class MenuCalendarComponent implements OnInit {
     return this._menu; 
   }
   
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit() { }
 
@@ -70,7 +73,22 @@ export class MenuCalendarComponent implements OnInit {
 
   removeDay() {
     if (this.currentId) {
-      console.log("Remove " + this.currentId);
+
+      let eventToRemove = this.currentEvent;
+
+      const dialogRef = this.dialog.open(RemoveMenuDayDialogComponent, {
+        width: '350px', data: { 
+          event: eventToRemove }
+      });
+
+      dialogRef.afterClosed().subscribe(result => {
+        if (result) {
+          console.log("Remove " + eventToRemove.title);
+          this.events = this.events.filter(event => event.id != eventToRemove.id);
+          // TODO: REMOVE FROM DATABASE
+        }
+      });   
+      
     }
   }
 
@@ -105,6 +123,7 @@ export class MenuCalendarComponent implements OnInit {
   leaveDay(day: MonthViewDay) {
     this.currentDay = undefined;
     this.currentId = undefined;
+    this.currentEvent = undefined;
   }  
 
   findEvent(day: MonthViewDay): CalendarEvent {
@@ -117,6 +136,7 @@ export class MenuCalendarComponent implements OnInit {
       }      
     });
 
+    this.currentEvent = currentEvent;
     return currentEvent;
   }
 }

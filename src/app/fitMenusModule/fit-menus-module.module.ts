@@ -62,7 +62,9 @@ registerLocaleData(localeHr);
   entryComponents: [
     AddMenuDialogComponent,
     DeleteMenuDialogComponent,
-    EditMenuUsersDialogComponent
+    EditMenuUsersDialogComponent,
+    RemoveMenuDayDialogComponent,
+    AddMenuDayDialogComponent
   ]
 })
 export class FitMenusModuleModule { }

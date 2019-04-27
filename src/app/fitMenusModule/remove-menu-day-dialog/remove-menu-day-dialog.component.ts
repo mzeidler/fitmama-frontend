@@ -13,4 +13,7 @@ export class RemoveMenuDayDialogComponent implements OnInit {
   ngOnInit() {
   }
 
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
 }
