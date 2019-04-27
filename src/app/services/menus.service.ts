@@ -10,6 +10,11 @@ const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 
+const textOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'text/plain', 'Accept':'text/plain' }),
+  'responseType': 'text' as 'json'
+};
+
 @Injectable({
   providedIn: 'root'
 })
@@ -69,16 +74,12 @@ export class MenusService {
   }
 
   getMenuContent(menuDayId: number): Observable<string> {
-	  //@GetMapping("/api/menuday/content/{menuDayId}")
-    //public String getContent(@PathVariable Long menuDayId)
-    
-    return this.http.post<string>(this.menuDayUrl + "/content/" + menuDayId, httpOptions).pipe(
+    return this.http.get<string>(this.menuDayUrl + "/content/" + menuDayId, textOptions).pipe(
       catchError(this.handleError<string>('getMenuContent'))
     );
-
   }
 
   setMenuContent(menuDayId: number, content: string) {
-    return this.http.post(this.menuDayUrl + "/content/" + menuDayId, content, httpOptions).subscribe();
+    return this.http.post(this.menuDayUrl + "/content/" + menuDayId, content, textOptions).subscribe();
   }
 }
