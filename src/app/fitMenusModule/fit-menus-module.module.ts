@@ -24,6 +24,8 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { MenuCalendarComponent } from './menu-calendar/menu-calendar.component';
 import { MatDividerModule } from '@angular/material/divider';
 import localeHr from '@angular/common/locales/hr';
+import { AddMenuDayDialogComponent } from './add-menu-day-dialog/add-menu-day-dialog.component';
+import { RemoveMenuDayDialogComponent } from './remove-menu-day-dialog/remove-menu-day-dialog.component';
 
 registerLocaleData(localeHr);
 
@@ -34,7 +36,7 @@ registerLocaleData(localeHr);
     AddMenuDialogComponent, 
     DeleteMenuDialogComponent, 
     EditMenuUsersDialogComponent, 
-    MenuCalendarComponent],
+    MenuCalendarComponent, AddMenuDayDialogComponent, RemoveMenuDayDialogComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
