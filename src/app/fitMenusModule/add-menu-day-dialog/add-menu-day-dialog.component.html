@@ -1,3 +1,18 @@
-<p>
-  add-menu-day-dialog works!
-</p>
+<h1 mat-dialog-title>{{data.title}} {{data.day | date: 'd.M.yyyy'}}</h1>
+
+<div mat-dialog-content>
+    <mat-form-field>
+      <input matInput [(ngModel)]="data.name" placeholder="kratak opis">
+    </mat-form-field>
+
+    <mat-form-field>
+        <textarea matInput [(ngModel)]="data.content">
+          </textarea>
+    </mat-form-field>
+
+  </div>
+
+<div mat-dialog-actions style="float: right">
+    <button mat-button (click)="onNoClick()">Odustani</button>
+    <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+</div>
