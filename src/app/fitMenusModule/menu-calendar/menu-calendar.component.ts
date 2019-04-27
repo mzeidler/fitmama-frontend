@@ -20,6 +20,9 @@ export class MenuCalendarComponent implements OnInit {
   locale: string = 'hr';
   activeDayIsOpen: boolean = true;
 
+  currentId: string | number;
+  currentDay: MonthViewDay;
+
   private _menu: Menu;
   
   @Input()
@@ -63,11 +66,24 @@ export class MenuCalendarComponent implements OnInit {
     this.events.forEach(event => {
       if (event.start.getFullYear() == day.date.getFullYear() && 
           event.start.getMonth() == day.date.getMonth() && 
-          event.start.getDate() == day.date.getDate()) {
+          event.start.getDate() == day.date.getDate()) {    
             currentEvent = event;
       }      
     });
 
     return currentEvent;
   }
+
+  enterDay(day: MonthViewDay) {
+    this.currentDay = day;
+    let ev: CalendarEvent = this.findEvent(day);
+    if(ev) {
+      this.currentId = ev.id;
+    }
+  }
+
+  leaveDay(day: MonthViewDay) {
+    this.currentDay = undefined;
+    this.currentId = undefined;
+  }  
 }
