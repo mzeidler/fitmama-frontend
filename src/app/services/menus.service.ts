@@ -64,11 +64,8 @@ export class MenusService {
     );
   }
 
-  removeMenuDay(menuDay: MenuDay) {
-    //@PostMapping("/api/menus/removeday/{dayid}")
-    //public void removeDay(@PathVariable Long dayid)
-
-    return this.http.post(this.menusUrl + "/removeday/" + menuDay.id, httpOptions).subscribe();
+  removeMenuDay(menuDayId: number) {
+    return this.http.post(this.menusUrl + "/removeday/" + menuDayId, httpOptions).subscribe();
   }
 
   getMenuContent(menuDayId: number): Observable<string> {

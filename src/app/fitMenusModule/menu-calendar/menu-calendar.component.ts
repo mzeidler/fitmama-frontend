@@ -79,6 +79,7 @@ export class MenuCalendarComponent implements OnInit {
     if (this.currentId) {
 
       let eventToRemove = this.currentEvent;
+      let idToRemove = this.currentId;
 
       const dialogRef = this.dialog.open(RemoveMenuDayDialogComponent, {
         width: '350px', data: { 
@@ -89,7 +90,9 @@ export class MenuCalendarComponent implements OnInit {
         if (result) {
           console.log("Remove " + eventToRemove.title);
           this.events = this.events.filter(event => event.id != eventToRemove.id);
-          // TODO: REMOVE FROM BACKEND
+          this.refresh.next();
+
+          this.menusService.removeMenuDay(Number(idToRemove));
         }
       });   
       
