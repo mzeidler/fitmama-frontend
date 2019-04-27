@@ -46,7 +46,7 @@
 
       <!-- BUTTONS FOR NON EXISTING EVENTS -->
       <mat-icon *ngIf="day.events.length == 0 && currentDay == day" matTooltip="dodaj meni" (click)="addDay()">add_circle_outline</mat-icon>
-      <mat-icon *ngIf="day.events.length == 0 && currentDay == day" matTooltip="umetni kopirani meni" (click)="pasteDay()">bookmark</mat-icon>
+      <mat-icon *ngIf="day.events.length == 0 && currentDay == day && copiedId" matTooltip="umetni kopirani meni" (click)="pasteDay()">bookmark</mat-icon>
 
     </div>
   </div>

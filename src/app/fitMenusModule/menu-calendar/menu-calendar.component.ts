@@ -29,6 +29,8 @@ export class MenuCalendarComponent implements OnInit {
   currentId: string | number;
   currentDay: MonthViewDay;
   currentEvent: CalendarEvent;
+  copiedId: string | number;
+  copiedEvent: CalendarEvent;
 
   private _menu: Menu;
   
@@ -131,7 +133,8 @@ export class MenuCalendarComponent implements OnInit {
 
   copyDay() {
     if (this.currentId) {
-      console.log("Copy " + this.currentId);
+      this.copiedId = this.currentId;
+      this.copiedEvent = this.currentEvent;
     }
   }
 
@@ -176,8 +179,22 @@ export class MenuCalendarComponent implements OnInit {
   }
 
   pasteDay() {
-    if (this.currentDay) {
-      console.log("Paste Day on " + this.currentDay.date.getDate() + "." + (this.currentDay.date.getMonth() + 1) + "." + this.currentDay.date.getFullYear());
+    if (this.currentDay && this.copiedEvent) {
+
+      let menuDay = <MenuDay>{};
+      menuDay.day = this.convertToString(this.currentDay.date);
+
+      this.menusService.copyDay(Number(this.copiedId), menuDay).subscribe(pastedMenuDay => {
+        let ev = <CalendarEvent>{};
+        ev.title = pastedMenuDay.name;
+        ev.color = mycolors.yellow;
+        ev.start = this.convertToDate(pastedMenuDay.day);
+        ev.id = pastedMenuDay.id;
+        this._menu.menuDays.push(pastedMenuDay);
+        this.events.push(ev);
+        this.refresh.next();
+      });
+
     }   
   }
 

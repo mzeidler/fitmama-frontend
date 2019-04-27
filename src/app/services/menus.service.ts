@@ -84,4 +84,10 @@ export class MenusService {
   setMenuContent(menuDayId: number, content: string) {
     return this.http.post(this.menuDayUrl + "/content/" + menuDayId, content, textOptions).subscribe();
   }
+
+  copyDay(menuDayId: number, menuDay: MenuDay): Observable<MenuDay> {
+    return this.http.post<MenuDay>(this.menusUrl + "/copyday/" + menuDayId, menuDay, httpOptions).pipe(
+      catchError(this.handleError<MenuDay>('copyDay'))
+    );
+  }
 }
