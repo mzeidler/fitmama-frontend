@@ -60,18 +60,50 @@ export class MenuCalendarComponent implements OnInit {
   }
 
   doubleClick() {
-
     if (this.currentId) {
-      console.log("Edit " + this.currentId);
+      this.editDay()
     } else if (this.currentDay) {
       this.addDay();
     }
-  
   }
 
   editDay() {
     if (this.currentId) {
-      console.log("Edit " + this.currentId);
+
+      let eventToEdit = this.currentEvent;
+      let menuDayId = this.currentId;
+
+      // TODO: Spinner ? 
+      this.menusService.getMenuContent(Number(this.currentId)).subscribe(content => {
+
+        const dialogRef = this.dialog.open(AddMenuDayDialogComponent, {
+          width: '350px', data: { 
+            title: 'Uredi meni za dan',
+            day: eventToEdit.start,
+            name: eventToEdit.title,
+            content: content
+          }
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+          if (result) {
+
+            let menuDay = <MenuDay>{};
+            menuDay.name = result.name;
+            menuDay.id = Number(menuDayId);
+
+            this.menusService.updateMenuDay(menuDay);
+
+            eventToEdit.title = result.name;
+            this.refresh.next();
+
+            this.menusService.setMenuContent(menuDay.id, result.content);
+
+          }
+        });   
+
+      });
+
     }
   }
 
@@ -88,10 +120,8 @@ export class MenuCalendarComponent implements OnInit {
 
       dialogRef.afterClosed().subscribe(result => {
         if (result) {
-          console.log("Remove " + eventToRemove.title);
           this.events = this.events.filter(event => event.id != eventToRemove.id);
           this.refresh.next();
-
           this.menusService.removeMenuDay(Number(idToRemove));
         }
       });   
@@ -142,7 +172,6 @@ export class MenuCalendarComponent implements OnInit {
         }
       });   
 
-      console.log("Add Day on " + this.currentDay.date.getDate() + "." + (this.currentDay.date.getMonth() + 1) + "." + this.currentDay.date.getFullYear());
     }
   }
 

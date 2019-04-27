@@ -61,7 +61,9 @@ export class MenusService {
     };
   }
 
-
+  updateMenuDay(menuDay: MenuDay) {
+    return this.http.post<MenuDay>(this.menusUrl + "/updateday", menuDay, httpOptions).subscribe();
+  }
 
   addMenuDay(menu: Menu, menuDay: MenuDay): Observable<MenuDay> {
     return this.http.post<MenuDay>(this.menusUrl + "/" + menu.id + "/addday", menuDay, httpOptions).pipe(
