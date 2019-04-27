@@ -24,7 +24,7 @@
   let-tooltipPlacement="tooltipPlacement" let-highlightDay="highlightDay" let-unhighlightDay="unhighlightDay"
   let-eventClicked="eventClicked" let-tooltipTemplate="tooltipTemplate" let-tooltipAppendToBody="tooltipAppendToBody">
 
-  <div (mouseenter)="enterDay(day)" (mouseleave)="leaveDay(day)" (dblclick)="doubleClick(day)">
+  <div (mouseenter)="enterDay(day)" (mouseleave)="leaveDay(day)" (dblclick)="doubleClick()">
 
     <!-- Gornji dio -->
     <div class="cal-cell-top">
@@ -40,13 +40,13 @@
       <mat-icon *ngIf="day.events.length == 0 && currentDay != day" matTooltip="dodaj meni">help_outline</mat-icon>
 
       <!-- BUTTONS FOR EXISTING EVENTS -->
-      <mat-icon *ngIf="day.events.length > 0 && currentId == day.events[0].id" matTooltip="uredi meni">edit</mat-icon>
-      <mat-icon *ngIf="day.events.length > 0 && currentId == day.events[0].id" matTooltip="obriši meni">clear</mat-icon>
-      <mat-icon *ngIf="day.events.length > 0 && currentId == day.events[0].id" matTooltip="kopiraj meni">bookmarks</mat-icon>
+      <mat-icon *ngIf="day.events.length > 0 && currentId == day.events[0].id" matTooltip="uredi meni" (click)="editDay()">edit</mat-icon>
+      <mat-icon *ngIf="day.events.length > 0 && currentId == day.events[0].id" matTooltip="obriši meni" (click)="removeDay()">clear</mat-icon>
+      <mat-icon *ngIf="day.events.length > 0 && currentId == day.events[0].id" matTooltip="kopiraj meni" (click)="copyDay()">bookmarks</mat-icon>
 
       <!-- BUTTONS FOR NON EXISTING EVENTS -->
-      <mat-icon *ngIf="day.events.length == 0 && currentDay == day" matTooltip="dodaj meni">add_circle_outline</mat-icon>
-      <mat-icon *ngIf="day.events.length == 0 && currentDay == day" matTooltip="umetni kopirani meni">bookmark</mat-icon>
+      <mat-icon *ngIf="day.events.length == 0 && currentDay == day" matTooltip="dodaj meni" (click)="addDay()">add_circle_outline</mat-icon>
+      <mat-icon *ngIf="day.events.length == 0 && currentDay == day" matTooltip="umetni kopirani meni" (click)="pasteDay()">bookmark</mat-icon>
 
     </div>
   </div>

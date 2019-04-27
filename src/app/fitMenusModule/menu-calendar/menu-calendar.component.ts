@@ -52,14 +52,60 @@ export class MenuCalendarComponent implements OnInit {
     this.activeDayIsOpen = false;
   }
 
-  doubleClick(day: MonthViewDay) {
-    let ev: CalendarEvent = this.findEvent(day);
-    if (ev) {
-      console.log("doubleclick event: , id=" + ev.id + ", title=" + ev.title);
-    } else {
-      console.log("Add new event at " + day);
-    }    
+  doubleClick() {
+
+    if (this.currentId) {
+      console.log("Edit " + this.currentId);
+    } else if (this.currentDay) {
+      console.log("Add Day on " + this.currentDay.date.getDate() + "." + (this.currentDay.date.getMonth() + 1) + "." + this.currentDay.date.getFullYear());
+    }
+  
   }
+
+  editDay() {
+    if (this.currentId) {
+      console.log("Edit " + this.currentId);
+    }
+  }
+
+  removeDay() {
+    if (this.currentId) {
+      console.log("Remove " + this.currentId);
+    }
+  }
+
+  copyDay() {
+    if (this.currentId) {
+      console.log("Copy " + this.currentId);
+    }
+  }
+
+  addDay() {
+    if (this.currentDay) {
+      console.log("Add Day on " + this.currentDay.date.getDate() + "." + (this.currentDay.date.getMonth() + 1) + "." + this.currentDay.date.getFullYear());
+    }
+  }
+
+  pasteDay() {
+    if (this.currentDay) {
+      console.log("Paste Day on " + this.currentDay.date.getDate() + "." + (this.currentDay.date.getMonth() + 1) + "." + this.currentDay.date.getFullYear());
+    }   
+  }
+
+  enterDay(day: MonthViewDay) {
+    this.currentDay = day;
+    let ev: CalendarEvent = this.findEvent(day);
+    if(ev) {
+      this.currentId = ev.id;
+    } else {
+      this.currentId = undefined;
+    }
+  }
+
+  leaveDay(day: MonthViewDay) {
+    this.currentDay = undefined;
+    this.currentId = undefined;
+  }  
 
   findEvent(day: MonthViewDay): CalendarEvent {
     let currentEvent: CalendarEvent = undefined;
@@ -73,17 +119,4 @@ export class MenuCalendarComponent implements OnInit {
 
     return currentEvent;
   }
-
-  enterDay(day: MonthViewDay) {
-    this.currentDay = day;
-    let ev: CalendarEvent = this.findEvent(day);
-    if(ev) {
-      this.currentId = ev.id;
-    }
-  }
-
-  leaveDay(day: MonthViewDay) {
-    this.currentDay = undefined;
-    this.currentId = undefined;
-  }  
 }
