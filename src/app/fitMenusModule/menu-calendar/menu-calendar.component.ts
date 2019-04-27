@@ -6,6 +6,10 @@ import { Subject } from 'rxjs';
 import { MonthViewDay } from 'calendar-utils';
 import { MatDialog } from '@angular/material';
 import { RemoveMenuDayDialogComponent } from '../remove-menu-day-dialog/remove-menu-day-dialog.component';
+import { AddMenuDayDialogComponent } from '../add-menu-day-dialog/add-menu-day-dialog.component';
+import { MenusService } from 'src/app/services/menus.service';
+import { MenuDay } from 'src/app/model/menuday';
+
 
 @Component({
   selector: 'app-menu-calendar',
@@ -37,7 +41,7 @@ export class MenuCalendarComponent implements OnInit {
       let ev = <CalendarEvent>{};
       ev.title = menuDay.name;
       ev.color = mycolors.yellow;
-      ev.start = new Date(menuDay.day);
+      ev.start = this.convertToDate(menuDay.day);
       ev.id = menuDay.id;
       this.events.push(ev);
     });
@@ -47,7 +51,7 @@ export class MenuCalendarComponent implements OnInit {
     return this._menu; 
   }
   
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog, private menusService: MenusService) { }
 
   ngOnInit() { }
 
@@ -60,7 +64,7 @@ export class MenuCalendarComponent implements OnInit {
     if (this.currentId) {
       console.log("Edit " + this.currentId);
     } else if (this.currentDay) {
-      console.log("Add Day on " + this.currentDay.date.getDate() + "." + (this.currentDay.date.getMonth() + 1) + "." + this.currentDay.date.getFullYear());
+      this.addDay();
     }
   
   }
@@ -85,7 +89,7 @@ export class MenuCalendarComponent implements OnInit {
         if (result) {
           console.log("Remove " + eventToRemove.title);
           this.events = this.events.filter(event => event.id != eventToRemove.id);
-          // TODO: REMOVE FROM DATABASE
+          // TODO: REMOVE FROM BACKEND
         }
       });   
       
@@ -100,6 +104,41 @@ export class MenuCalendarComponent implements OnInit {
 
   addDay() {
     if (this.currentDay) {
+
+      let dayToAdd = this.currentDay;
+
+      const dialogRef = this.dialog.open(AddMenuDayDialogComponent, {
+        width: '350px', data: { 
+          title: 'Dodaj meni za dan',
+          day: dayToAdd.date,
+          name: undefined,
+          content: undefined
+        }
+      });
+
+      dialogRef.afterClosed().subscribe(result => {
+        if (result) {
+
+          let menuDay = <MenuDay>{};
+          menuDay.name = result.name;
+          menuDay.day = this.convertToString(dayToAdd.date);
+
+          this.menusService.addMenuDay(this._menu, menuDay).subscribe(menuDay => {
+            let ev = <CalendarEvent>{};
+            ev.title = menuDay.name;
+            ev.color = mycolors.yellow;
+            ev.start = this.convertToDate(menuDay.day);
+            ev.id = menuDay.id;
+            this._menu.menuDays.push(menuDay);
+            this.events.push(ev);
+            this.refresh.next();
+
+            this.menusService.setMenuContent(menuDay.id, result.content);
+
+          });
+        }
+      });   
+
       console.log("Add Day on " + this.currentDay.date.getDate() + "." + (this.currentDay.date.getMonth() + 1) + "." + this.currentDay.date.getFullYear());
     }
   }
@@ -138,5 +177,16 @@ export class MenuCalendarComponent implements OnInit {
 
     this.currentEvent = currentEvent;
     return currentEvent;
+  }
+
+  convertToString(date: Date): string {
+    let year = date.getFullYear();
+    let month = date.getMonth() + 1;
+    let day = date.getDate();
+    return  year + "-" + (month < 10 ? "0" : "") + month + "-" + (day < 10 ? "0" : "") + day;
+  }
+
+  convertToDate(date: string): Date {
+    return new Date(date + "T00:00:00")
   }
 }
