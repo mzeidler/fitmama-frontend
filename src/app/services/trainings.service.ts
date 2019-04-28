@@ -88,7 +88,7 @@ export class TrainingsService {
   }
 
   copyDay(trainingDayId: number, trainingDay: TrainingDay): Observable<TrainingDay> {
-    return this.http.post<TrainingDay>(this.trainingDayUrl + "/copyday/" + trainingDayId, trainingDay, httpOptions).pipe(
+    return this.http.post<TrainingDay>(this.trainingsUrl + "/copyday/" + trainingDayId, trainingDay, httpOptions).pipe(
       catchError(this.handleError<TrainingDay>('copyDay'))
     );
   }  
