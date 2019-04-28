@@ -1,3 +1,12 @@
-<p>
-  add-training-dialog works!
-</p>
+<h1 mat-dialog-title>{{data.title}}</h1>
+
+<div mat-dialog-content>
+    <mat-form-field>
+      <input matInput [(ngModel)]="data.name" placeholder="{{data.placeholder}}">
+    </mat-form-field>
+</div>
+
+<div mat-dialog-actions style="float: right">
+    <button mat-button (click)="onNoClick()">Odustani</button>
+    <button mat-button [mat-dialog-close]="data.name" cdkFocusInitial>Ok</button>
+</div>
