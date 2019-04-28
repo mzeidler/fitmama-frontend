@@ -17,7 +17,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatChipsModule } from '@angular/material/chips';
 import { FitUsersModuleModule } from './fitUsersModule/fit-users-module.module';
 import { FitMenusModuleModule } from './fitMenusModule/fit-menus-module.module';
-import { FitExercisesModuleModule } from './fitExercisesModule/fit-exercises-module.module';
+import { FitTrainingsModuleModule } from './fitTrainingsModule/fit-trainings-module.module';
 import { FitAdminModuleModule } from './fitAdminModule/fit-admin-module.module';
 import { NotFoundComponent } from './not-found/not-found.component';
 
@@ -43,7 +43,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     HttpClientModule,
     FitUsersModuleModule,
     FitMenusModuleModule,
-    FitExercisesModuleModule,
+    FitTrainingsModuleModule,
     FitAdminModuleModule,
     AppRoutingModule
   ],
