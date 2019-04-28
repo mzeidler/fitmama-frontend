@@ -1,3 +1,7 @@
+import { Menu } from './menu';
+import { Training } from './training';
+import { Role } from './role';
+
 export class User {
     id: number;
     username: string;    
@@ -12,4 +16,8 @@ export class User {
     email: string;
     birthDate: Date;
     height: number;
+
+    menus: Menu[];
+    trainings: Training[];
+    roles: Role[];
 }
