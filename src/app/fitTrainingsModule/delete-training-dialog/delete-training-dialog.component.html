@@ -1,3 +1,11 @@
-<p>
-  delete-training-dialog works!
-</p>
+<div mat-dialog-title>
+  Da li želite obrisati trening {{data.training.name}}?
+  </div>
+  
+  <div class="mat-body" *ngIf="data.training.users && data.training.users.length > 0">{{data.menu.users.length}} korisnica koristi ovaj trening</div>
+  
+  <div mat-dialog-actions style="float: right">
+      <button mat-button (click)="onNoClick()">Ne</button>
+      <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Da</button>
+  </div>
+  
