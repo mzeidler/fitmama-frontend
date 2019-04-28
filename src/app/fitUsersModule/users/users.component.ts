@@ -11,7 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 export class UsersComponent implements OnInit {
 
   users: User[];
-  displayedColumns: string[] = ['username', 'firstName', 'lastName', 'email', 'birthDate'];
+  displayedColumns: string[] = ['name', 'menus', 'trainings', 'roles'];
 
   constructor(private usersService: UsersService, private route: ActivatedRoute) { }
 
@@ -23,4 +23,7 @@ export class UsersComponent implements OnInit {
     this.usersService.getUsers().subscribe(users => this.users = users);
   }
 
+  addUser(): void {
+    console.log('Dodaj korisnicu');
+  }
 }

@@ -1,37 +1,46 @@
-
-
 <p>
-<button mat-raised-button (click)="getUsers()">Load Users</button>
+  <button mat-icon-button>
+      <mat-icon aria-label="Refresh" (click)="getUsers()" matTooltip="Učitaj korisnice">autorenew</mat-icon>
+  </button>
+
+  <button mat-icon-button *ngIf="users">
+      <mat-icon aria-label="Add" (click)="addUser()" matTooltip="Dodaj korisnicu">add_circle_outline</mat-icon>
+  </button>
+
 </p>
 
 <mat-table [dataSource]="users" class="mat-elevation-z8">
 
-  <ng-container matColumnDef="firstName">
-    <mat-header-cell *matHeaderCellDef> First name </mat-header-cell>
-    <mat-cell *matCellDef="let user"> {{user.firstName}} </mat-cell>
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef>Ime i prezime</mat-header-cell>
+    <mat-cell *matCellDef="let user"> {{user.name}} </mat-cell>
   </ng-container>
 
-  <ng-container matColumnDef="lastName">
-    <mat-header-cell *matHeaderCellDef> Last name </mat-header-cell>
-    <mat-cell *matCellDef="let user"> {{user.lastName}} </mat-cell>
-  </ng-container>
-
-
-  <ng-container matColumnDef="username">
-    <mat-header-cell *matHeaderCellDef> Username </mat-header-cell>
-    <mat-cell *matCellDef="let user" > 
-      <a routerLink="/user/{{user.id}}">{{user.username}} </a>
+  <ng-container matColumnDef="menus">
+    <mat-header-cell *matHeaderCellDef>Meni</mat-header-cell>
+    <mat-cell *matCellDef="let user"> 
+        <mat-chip-list *ngFor="let menu of user.menus">
+            <mat-chip>{{menu.name}}</mat-chip>&nbsp;
+        </mat-chip-list>
     </mat-cell>
   </ng-container>
 
-  <ng-container matColumnDef="email">
-    <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
-    <mat-cell *matCellDef="let user"> {{user.email}} </mat-cell>
+  <ng-container matColumnDef="trainings">
+    <mat-header-cell *matHeaderCellDef>Trening</mat-header-cell>
+    <mat-cell *matCellDef="let user">
+        <mat-chip-list *ngFor="let training of user.trainings">
+            <mat-chip>{{training.name}}</mat-chip>&nbsp;
+        </mat-chip-list>
+    </mat-cell>
   </ng-container>
 
-  <ng-container matColumnDef="birthDate">
-    <mat-header-cell *matHeaderCellDef> Birth Date </mat-header-cell>
-    <mat-cell *matCellDef="let user"> {{user.birthDate | date: 'd.M.yyyy'}} </mat-cell>
+  <ng-container matColumnDef="roles">
+    <mat-header-cell *matHeaderCellDef> Uloga </mat-header-cell>
+    <mat-cell *matCellDef="let user">
+        <mat-chip-list *ngFor="let role of user.roles">
+            <mat-chip>{{role.name}}</mat-chip>&nbsp;
+        </mat-chip-list>      
+    </mat-cell>
   </ng-container>
 
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
