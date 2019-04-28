@@ -7,9 +7,11 @@ import { UserMenusComponent } from './user-menus/user-menus.component';
 import { UserExercisesComponent } from './user-exercises/user-exercises.component';
 import { UsersComponent } from './users/users.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
-import { MatTableModule, MatInputModule, MatButtonModule } from '@angular/material';
+import { MatTableModule, MatInputModule, MatButtonModule, MatIconModule, MatTooltipModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { ArrayPipe } from '../pipes/arraypipe';
+import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,8 @@ import { BrowserModule } from '@angular/platform-browser';
     UserDetailsComponent,
     UserMeasurementsComponent, 
     UserMenusComponent, 
-    UserExercisesComponent],
+    UserExercisesComponent,
+    ArrayPipe],
   imports: [
     CommonModule,
     BrowserModule,
@@ -25,6 +28,9 @@ import { BrowserModule } from '@angular/platform-browser';
     MatButtonModule,
     MatTableModule,
     MatInputModule,
+    MatIconModule,
+    MatTooltipModule,
+    MatChipsModule,
     FitUsersModuleRoutingModule
   ]
 })
