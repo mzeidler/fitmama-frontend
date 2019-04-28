@@ -1,3 +1,9 @@
-<p>
-  remove-training-day-dialog works!
-</p>
+<div mat-dialog-title>
+  Da li želite obrisati trening {{data.event.title}} za dan {{data.event.start | date: 'd.M.yyyy'}}?
+  </div>
+  
+  <div mat-dialog-actions style="float: right">
+      <button mat-button (click)="onNoClick()">Ne</button>
+      <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Da</button>
+  </div>
+  
