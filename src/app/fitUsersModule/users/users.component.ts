@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService} from '../../services/users.service'
 import { User } from '../../model/user';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-users',
@@ -12,10 +13,10 @@ export class UsersComponent implements OnInit {
   users: User[];
   displayedColumns: string[] = ['username', 'firstName', 'lastName', 'email', 'birthDate'];
 
-  constructor(private usersService: UsersService) { }
+  constructor(private usersService: UsersService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    //this.getUsers();
+    this.users = this.route.snapshot.data['usersdetails'];
   }
 
   getUsers(): void {
