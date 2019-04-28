@@ -5,6 +5,7 @@ import { MatDialog, MatDialogRef } from '@angular/material';
 import { AddMenuDialogComponent } from '../add-menu-dialog/add-menu-dialog.component';
 import { User } from 'src/app/model/user';
 import { UsersService } from 'src/app/services/users.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-menus',
@@ -17,9 +18,11 @@ export class MenusComponent implements OnInit {
   users: User[];
   name: string;
 
-  constructor(private menusService: MenusService, private userService: UsersService, public dialog: MatDialog) { }
+  constructor(private menusService: MenusService, private userService: UsersService, public dialog: MatDialog, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.users = this.route.snapshot.data['users'].users;
+    this.menus = this.route.snapshot.data['menus'];
   }
 
   getMenus(): void {
