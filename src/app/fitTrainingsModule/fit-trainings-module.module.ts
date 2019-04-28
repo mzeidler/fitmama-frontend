@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { FitExercisesModuleRoutingModule } from './fit-trainings-module-routing.module';
+import { FitTrainingsModuleRoutingModule } from './fit-trainings-module-routing.module';
 import { AddTrainingDayDialogComponent } from './add-training-day-dialog/add-training-day-dialog.component';
 import { AddTrainingDialogComponent } from './add-training-dialog/add-training-dialog.component';
 import { DeleteTrainingDialogComponent } from './delete-training-dialog/delete-training-dialog.component';
@@ -15,7 +15,7 @@ import { RemoveTrainingDayDialogComponent } from './remove-training-day-dialog/r
   declarations: [AddTrainingDayDialogComponent, AddTrainingDialogComponent, DeleteTrainingDialogComponent, EditTrainingUsersDialogComponent, TrainingCalendarComponent, TrainingDetailsComponent, TrainingsComponent, RemoveTrainingDayDialogComponent],
   imports: [
     CommonModule,
-    FitExercisesModuleRoutingModule
+    FitTrainingsModuleRoutingModule
   ]
 })
 export class FitTrainingsModuleModule { }
