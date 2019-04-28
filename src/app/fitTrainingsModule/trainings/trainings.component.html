@@ -1,3 +1,38 @@
+
 <p>
-  trainings works!
+  <button mat-icon-button>
+      <mat-icon aria-label="Refresh" (click)="getTrainings()" matTooltip="Učitaj treninge">autorenew</mat-icon>
+  </button>
+
+  <button mat-icon-button *ngIf="trainings">
+      <mat-icon aria-label="Add" (click)="addTraining()" matTooltip="Dodaj trening">add_circle_outline</mat-icon>
+  </button>
+
+</p>
+
+<p>
+  <mat-accordion class="example-headers-align">
+      <div *ngFor="let training of trainings">
+          <p>
+              <mat-expansion-panel>
+                  <mat-expansion-panel-header>
+                      <mat-panel-title>
+                          <p><b>{{training.name}}</b></p>
+                      </mat-panel-title>
+                      <mat-panel-description>
+                          <p></p>
+                          <p></p>                            
+                      </mat-panel-description>
+                  </mat-expansion-panel-header>
+                  <app-training-details 
+                  [training]="training"
+                  [users]="users"
+                  (deleteRequest)="deleteTraining($event)"
+                  (updateRequest)="updateTraining($event)"
+                  (updateUsersRequest)="updateTrainingUsers($event)"
+                  ></app-training-details>                    
+              </mat-expansion-panel>
+          </p>
+      </div>
+  </mat-accordion>
 </p>
