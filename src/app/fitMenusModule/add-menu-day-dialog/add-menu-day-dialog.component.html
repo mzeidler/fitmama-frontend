@@ -4,13 +4,9 @@
     <mat-form-field>
       <input matInput [(ngModel)]="data.name" placeholder="kratak opis">
     </mat-form-field>
+</div>
 
-    <mat-form-field>
-        <textarea matInput [(ngModel)]="data.content">
-          </textarea>
-    </mat-form-field>
-
-  </div>
+<ckeditor class="mat-body" [(ngModel)]="data.content" [editor]="Editor" (ready)="onReady($event)"></ckeditor>
 
 <div mat-dialog-actions style="float: right">
     <button mat-button (click)="onNoClick()">Odustani</button>

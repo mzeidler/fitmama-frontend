@@ -87,7 +87,7 @@ export class MenuCalendarComponent implements OnInit {
       this.menusService.getMenuContent(Number(this.currentId)).subscribe(content => {
 
         const dialogRef = this.dialog.open(AddMenuDayDialogComponent, {
-          width: '350px', data: { 
+          width: '80%', height: '80%', data: { 
             title: 'Uredi meni za dan',
             day: eventToEdit.start,
             name: eventToEdit.title,
@@ -152,11 +152,11 @@ export class MenuCalendarComponent implements OnInit {
       let dayToAdd = this.currentDay;
 
       const dialogRef = this.dialog.open(AddMenuDayDialogComponent, {
-        width: '350px', data: { 
+        width: '80%', height: '80%', data: { 
           title: 'Dodaj meni za dan',
           day: dayToAdd.date,
-          name: undefined,
-          content: undefined
+          name: '',
+          content: ''
         }
       });
 

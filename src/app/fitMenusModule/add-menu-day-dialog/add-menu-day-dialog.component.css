@@ -1,0 +1,6 @@
+:host ::ng-deep .ck-editor__editable {
+    height: 72%;
+    border-width: 1px;
+    border-color: black;
+    overflow-y: scroll;
+}

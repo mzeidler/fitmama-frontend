@@ -26,6 +26,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import localeHr from '@angular/common/locales/hr';
 import { AddMenuDayDialogComponent } from './add-menu-day-dialog/add-menu-day-dialog.component';
 import { RemoveMenuDayDialogComponent } from './remove-menu-day-dialog/remove-menu-day-dialog.component';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 registerLocaleData(localeHr);
 
@@ -54,6 +55,7 @@ registerLocaleData(localeHr);
     DragDropModule,
     MatListModule,
     MatDividerModule,
+    CKEditorModule,
     CalendarModule.forRoot({
       provide: DateAdapter,
       useFactory: adapterFactory
