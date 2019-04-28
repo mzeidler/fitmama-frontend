@@ -29,7 +29,6 @@ export class MenuCalendarComponent implements OnInit {
   currentId: string | number;
   currentDay: MonthViewDay;
   currentEvent: CalendarEvent;
-  copiedId: string | number;
   copiedEvent: CalendarEvent;
 
   private _menu: Menu;
@@ -53,6 +52,15 @@ export class MenuCalendarComponent implements OnInit {
     return this._menu; 
   }
   
+
+  set copiedId(id : string | number) {
+    this.menusService.copiedId = id;
+  }
+
+  get copiedId() {
+    return this.menusService.copiedId;
+  }
+
   constructor(public dialog: MatDialog, private menusService: MenusService) { }
 
   ngOnInit() { }
@@ -179,7 +187,7 @@ export class MenuCalendarComponent implements OnInit {
   }
 
   pasteDay() {
-    if (this.currentDay && this.copiedEvent) {
+    if (this.currentDay && this.copiedId) {
 
       let menuDay = <MenuDay>{};
       menuDay.day = this.convertToString(this.currentDay.date);

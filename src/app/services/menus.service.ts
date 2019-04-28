@@ -20,6 +20,8 @@ const textOptions = {
 })
 export class MenusService {
 
+  public copiedId: number | string;
+  
   private menusUrl = `//${environment.resturl}:9001/api/menus`;
 
   private menuDayUrl = `//${environment.resturl}:9001/api/menuday`;
