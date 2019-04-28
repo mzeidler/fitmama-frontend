@@ -21,6 +21,11 @@ export class AddMenuDayDialogComponent implements OnInit {
   }
 
   public onReady(editor) {
+
+    editor.editing.view.change( writer => {
+      writer.setAttribute( 'spellcheck', 'false', editor.editing.view.document.getRoot() );
+    } );
+
     editor.ui.getEditableElement().parentElement.insertBefore(
         editor.ui.view.toolbar.element,
         editor.ui.getEditableElement()
