@@ -1,3 +1,18 @@
-<p>
-  training-details works!
-</p>
+
+<div style="float: right">
+  <button mat-icon-button>
+      <mat-icon aria-label="Edit" matTooltip="Uredi trening" (click)="editTraining()">edit</mat-icon>
+    </button>
+    <button mat-icon-button>
+      <mat-icon aria-label="Remove" matTooltip="Obriši trening" (click)="deleteTraining()">delete_forever</mat-icon>
+    </button> 
+    <button mat-icon-button >
+      <mat-icon aria-label="Users" matTooltip="Korisnice" (click)="editUsers()" matBadge="{{training.users ? training.users.length : 0}}">people</mat-icon>
+    </button>       
+</div>
+
+<div align="center">
+<div style="width: 60%" align="center">
+<app-training-calendar [training]="training"></app-training-calendar>
+</div>
+</div>
