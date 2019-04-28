@@ -37,7 +37,9 @@ registerLocaleData(localeHr);
     AddMenuDialogComponent, 
     DeleteMenuDialogComponent, 
     EditMenuUsersDialogComponent, 
-    MenuCalendarComponent, AddMenuDayDialogComponent, RemoveMenuDayDialogComponent],
+    MenuCalendarComponent, 
+    AddMenuDayDialogComponent, 
+    RemoveMenuDayDialogComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
