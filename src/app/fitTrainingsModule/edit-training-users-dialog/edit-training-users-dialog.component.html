@@ -1,3 +1,32 @@
-<p>
-  edit-training-users-dialog works!
-</p>
+<h1 mat-dialog-title>Korisnice treninga</h1>
+
+<div style="width:48%; float:left">
+    <span class="mat-body">Koristi trening</span>
+    <div
+        cdkDropList
+        #todoList="cdkDropList"
+        [cdkDropListData]="data.trainingUsers"
+        [cdkDropListConnectedTo]="[doneList]"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)">
+        <button mat-raised-button color="primary" class="example-margin" *ngFor="let user of data.trainingUsers" cdkDrag>{{user.name}}</button>
+    </div>
+</div>
+
+<div style="width:48%; float:right">
+    <span class="mat-body">Ne koristi trening</span>
+    <div
+        cdkDropList
+        #doneList="cdkDropList"
+        [cdkDropListData]="data.otherUsers"
+        [cdkDropListConnectedTo]="[todoList]"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)">
+        <button mat-raised-button color="primary" class="example-margin" *ngFor="let user of data.otherUsers" cdkDrag>{{user.name}}</button>
+    </div>   
+</div>
+
+<div mat-dialog-actions style="float: right">
+    <button mat-button (click)="onNoClick()">Odustani</button>
+    <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+</div>
