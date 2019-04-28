@@ -1,3 +1,53 @@
-<p>
-  training-calendar works!
-</p>
+<button mat-button mwlCalendarPreviousView [(viewDate)]="viewDate" [view]="view"
+  (viewDateChange)="closeOpenMonthViewDay()">
+  <mat-icon matTooltip="prethodni mjesec">skip_previous</mat-icon>
+</button>
+
+<b>{{ viewDate | calendarDate:(view + 'ViewTitle'):'hr' }}</b>
+
+<button mat-button mwlCalendarNextView [(viewDate)]="viewDate" [view]="view" (viewDateChange)="closeOpenMonthViewDay()">
+  <mat-icon matTooltip="idući mjesec">skip_next</mat-icon>
+</button>
+
+<button mat-button mwlCalendarToday [(viewDate)]="viewDate">
+  <mat-icon matTooltip="danas">today</mat-icon>
+</button>
+
+<mat-divider></mat-divider>
+
+<mwl-calendar-month-view [viewDate]="viewDate" [events]="events" [weekStartsOn]="1" [locale]="locale"
+  [cellTemplate]="customCellTemplate" [refresh]="refresh">
+</mwl-calendar-month-view>
+
+
+<ng-template #customCellTemplate let-day="day" let-openDay="openDay" let-locale="locale"
+  let-tooltipPlacement="tooltipPlacement" let-highlightDay="highlightDay" let-unhighlightDay="unhighlightDay"
+  let-eventClicked="eventClicked" let-tooltipTemplate="tooltipTemplate" let-tooltipAppendToBody="tooltipAppendToBody">
+
+  <div (mouseenter)="enterDay(day)" (mouseleave)="leaveDay(day)" (dblclick)="doubleClick()">
+
+    <!-- Gornji dio -->
+    <div class="cal-cell-top">
+      <span class="cal-day-number">{{ day.date | calendarDate:'monthViewDayNumber':locale }}</span>
+    </div>
+
+
+    <!-- Donji dio -->
+    <div class="cal-events">
+
+      <!-- IMAGES -->
+      <mat-icon *ngIf="day.events.length > 0" matTooltip="{{day.events[0].title}}">directions_run</mat-icon>
+      <mat-icon *ngIf="day.events.length == 0 && currentDay != day" matTooltip="dodaj trening">help_outline</mat-icon>
+
+      <!-- BUTTONS FOR EXISTING EVENTS -->
+      <mat-icon *ngIf="day.events.length > 0 && currentId == day.events[0].id" matTooltip="uredi trening" (click)="editDay()">edit</mat-icon>
+      <mat-icon *ngIf="day.events.length > 0 && currentId == day.events[0].id" matTooltip="obriši trening" (click)="removeDay()">clear</mat-icon>
+      <mat-icon *ngIf="day.events.length > 0 && currentId == day.events[0].id" matTooltip="kopiraj trening" (click)="copyDay()">bookmarks</mat-icon>
+
+      <!-- BUTTONS FOR NON EXISTING EVENTS -->
+      <mat-icon *ngIf="day.events.length == 0 && currentDay == day" matTooltip="dodaj trening" (click)="addDay()">add_circle_outline</mat-icon>
+      <mat-icon *ngIf="day.events.length == 0 && currentDay == day && copiedId" matTooltip="umetni kopirani trening" (click)="pasteDay()">bookmark</mat-icon>
+
+    </div>
+  </div>
+</ng-template>
