@@ -43,6 +43,8 @@ export class MenusComponent implements OnInit {
       if (this.name) {
         let newMenu = new Menu();
         newMenu.name = this.name;
+        newMenu.menuDays = [];
+        newMenu.users = [];
 
         this.menusService.addMenu(newMenu)
         .subscribe(menu => {
