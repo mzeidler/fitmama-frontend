@@ -35,7 +35,7 @@
   </ng-container>
 
   <ng-container matColumnDef="roles">
-    <mat-header-cell *matHeaderCellDef> Uloga </mat-header-cell>
+    <mat-header-cell *matHeaderCellDef>Uloga</mat-header-cell>
     <mat-cell *matCellDef="let user">
         <mat-chip-list *ngFor="let role of user.roles">
             <mat-chip>{{role.name}}</mat-chip>&nbsp;
