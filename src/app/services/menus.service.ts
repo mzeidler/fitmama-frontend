@@ -5,6 +5,7 @@ import {environment} from '../../environments/environment';
 import { Menu } from '../model/menu';
 import { MenuDay } from '../model/menuday';
 import { catchError, map, tap } from 'rxjs/operators';
+import { MenuIdList } from '../model/menuidlist';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -31,6 +32,12 @@ export class MenusService {
   getMenus(): Observable<Menu[]> {
     return this.http.get<Menu[]>(this.menusUrl).pipe(
       catchError(this.handleError('getMenus', []))
+    );
+  }
+
+  getMenuIdList(): Observable<MenuIdList> {
+    return this.http.get<MenuIdList>(`${this.menusUrl}/short`).pipe(
+      catchError(this.handleError<MenuIdList>('getMenuIdList'))
     );
   }
 

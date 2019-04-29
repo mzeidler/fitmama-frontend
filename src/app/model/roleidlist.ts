@@ -1,5 +1,5 @@
 import { Role } from './role';
 
-export class Roles {
+export class RoleIdList {
     roles: Role[];
 }

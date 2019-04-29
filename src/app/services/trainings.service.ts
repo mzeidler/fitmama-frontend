@@ -5,6 +5,7 @@ import {environment} from '../../environments/environment';
 import { Training } from '../model/training';
 import { TrainingDay } from '../model/trainingday';
 import { catchError, map, tap } from 'rxjs/operators';
+import { TrainingIdList } from '../model/trainingidlist';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -31,6 +32,12 @@ export class TrainingsService {
   getTrainings(): Observable<Training[]> {
     return this.http.get<Training[]>(this.trainingsUrl).pipe(
       catchError(this.handleError('getTrainings', []))
+    );
+  }
+
+  getTrainingIdList(): Observable<TrainingIdList> {
+    return this.http.get<TrainingIdList>(`${this.trainingsUrl}/short`).pipe(
+      catchError(this.handleError<TrainingIdList>('getTrainingIdList'))
     );
   }
 

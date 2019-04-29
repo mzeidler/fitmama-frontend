@@ -1,5 +1,5 @@
 import { Training } from './training';
 
-export class Trainings {
+export class TrainingIdList {
     trainings: Training[];
 }

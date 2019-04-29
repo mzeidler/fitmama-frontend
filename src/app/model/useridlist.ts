@@ -1,5 +1,5 @@
 import { User } from './user';
 
-export class Users {
+export class UserIdList {
     users: User[];
 }

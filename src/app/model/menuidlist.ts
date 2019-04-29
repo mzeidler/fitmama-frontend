@@ -1,5 +1,5 @@
 import { Menu } from './menu';
 
-export class Menus {
+export class MenuIdList {
     menus: Menu[];
 }
