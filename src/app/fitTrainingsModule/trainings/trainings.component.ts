@@ -21,13 +21,13 @@ export class TrainingsComponent implements OnInit {
   constructor(private trainingsService: TrainingsService, private userService: UsersService, public dialog: MatDialog, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.users = this.route.snapshot.data['users'].users;
+    this.users = this.route.snapshot.data['useridlist'].users;
     this.trainings = this.route.snapshot.data['trainings'];
   }
 
   getTrainings(): void {
+    this.userService.getUserIdList().subscribe(users => this.users = users.users); 
     this.trainingsService.getTrainings().subscribe(trainings => this.trainings = trainings);
-    this.userService.getUsersShort().subscribe(users => this.users = users.users); 
   }
 
   addTraining(): void {
