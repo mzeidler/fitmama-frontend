@@ -12,6 +12,9 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { ArrayPipe } from '../pipes/arraypipe';
 import { MatChipsModule } from '@angular/material/chips';
+import { EditUserMenusDialogComponent } from './edit-user-menus-dialog/edit-user-menus-dialog.component';
+import { EditUserTrainingsDialogComponent } from './edit-user-trainings-dialog/edit-user-trainings-dialog.component';
+import { EditUserRolesDialogComponent } from './edit-user-roles-dialog/edit-user-roles-dialog.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,10 @@ import { MatChipsModule } from '@angular/material/chips';
     UserMeasurementsComponent, 
     UserMenusComponent, 
     UserExercisesComponent,
-    ArrayPipe],
+    ArrayPipe,
+    EditUserMenusDialogComponent,
+    EditUserTrainingsDialogComponent,
+    EditUserRolesDialogComponent],
   imports: [
     CommonModule,
     BrowserModule,
