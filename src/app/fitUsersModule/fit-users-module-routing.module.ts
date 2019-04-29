@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { UsersComponent } from './users/users.component';
-import { UsersDetailsResolverService } from '../services/users-details-resolver.service';
+import { UsersDetailsResolverService } from '../resolvers/users-details-resolver.service';
 import { UserMyfitComponent } from './user-myfit/user-myfit.component';
 
 const routes: Routes = [

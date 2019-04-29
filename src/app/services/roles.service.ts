@@ -4,6 +4,7 @@ import {environment} from '../../environments/environment';
 import { Observable, of } from 'rxjs';
 import { RoleIdList } from '../model/roleidlist';
 import { catchError, map, tap } from 'rxjs/operators';
+import { Role } from '../model/role';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,12 @@ export class RolesService {
   getRoleIdList(): Observable<RoleIdList> {
     return this.http.get<RoleIdList>(`${this.rolesUrl}/short`).pipe(
       catchError(this.handleError<RoleIdList>('getRoleIdList'))
+    );
+  }
+
+  getRoles(): Observable<Role[]> {
+    return this.http.get<Role[]>(this.rolesUrl).pipe(
+      catchError(this.handleError('getRoles', []))
     );
   }
 
