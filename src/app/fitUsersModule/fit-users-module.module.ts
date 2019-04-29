@@ -15,6 +15,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { EditUserMenusDialogComponent } from './edit-user-menus-dialog/edit-user-menus-dialog.component';
 import { EditUserTrainingsDialogComponent } from './edit-user-trainings-dialog/edit-user-trainings-dialog.component';
 import { EditUserRolesDialogComponent } from './edit-user-roles-dialog/edit-user-roles-dialog.component';
+import { UserMyfitComponent } from './user-myfit/user-myfit.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { EditUserRolesDialogComponent } from './edit-user-roles-dialog/edit-user
     ArrayPipe,
     EditUserMenusDialogComponent,
     EditUserTrainingsDialogComponent,
-    EditUserRolesDialogComponent],
+    EditUserRolesDialogComponent,
+    UserMyfitComponent],
   imports: [
     CommonModule,
     BrowserModule,
