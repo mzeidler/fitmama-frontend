@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { UsersComponent } from './users/users.component';
-import { UserDetailsComponent } from './user-details/user-details.component';
 import { UsersDetailsResolverService } from '../services/users-details-resolver.service';
+import { UserMyfitComponent } from './user-myfit/user-myfit.component';
 
 const routes: Routes = [
   { path: 'users', component: UsersComponent, 
@@ -10,7 +10,7 @@ const routes: Routes = [
       usersdetails: UsersDetailsResolverService
     }
   },
-  { path: 'user/:id', component: UserDetailsComponent }
+  { path: 'user/:id', component: UserMyfitComponent }
 
 ];
 
