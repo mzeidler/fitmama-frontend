@@ -8,6 +8,10 @@ import { Role } from 'src/app/model/role';
 import { MenusService } from 'src/app/services/menus.service';
 import { TrainingsService } from 'src/app/services/trainings.service';
 import { RolesService } from 'src/app/services/roles.service';
+import { MatDialog } from '@angular/material';
+import { EditUserMenusDialogComponent } from '../edit-user-menus-dialog/edit-user-menus-dialog.component';
+import { EditUserTrainingsDialogComponent } from '../edit-user-trainings-dialog/edit-user-trainings-dialog.component';
+import { EditUserRolesDialogComponent } from '../edit-user-roles-dialog/edit-user-roles-dialog.component';
 
 @Component({
   selector: 'app-users',
@@ -16,25 +20,25 @@ import { RolesService } from 'src/app/services/roles.service';
 })
 export class UsersComponent implements OnInit {
 
-  trainings: Training[];
-  menus: Menu[];
-  roles: Role[];
+  allTrainings: Training[];
+  allMenus: Menu[];
+  allRoles: Role[];
   users: User[];
   displayedColumns: string[] = ['name', 'menus', 'trainings', 'roles'];
 
-  constructor(private usersService: UsersService, private menusService: MenusService, private trainingsService: TrainingsService, private rolesService: RolesService, private route: ActivatedRoute) { }
+  constructor(public dialog: MatDialog, private usersService: UsersService, private menusService: MenusService, private trainingsService: TrainingsService, private rolesService: RolesService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.menus = this.route.snapshot.data['menuidlist'].menus;
-    this.trainings = this.route.snapshot.data['trainingidlist'].trainings;
-    this.roles = this.route.snapshot.data['roleidlist'].roles;
+    this.allMenus = this.route.snapshot.data['menuidlist'].menus;
+    this.allTrainings = this.route.snapshot.data['trainingidlist'].trainings;
+    this.allRoles = this.route.snapshot.data['roleidlist'].roles;
     this.users = this.route.snapshot.data['users'];
   }
 
   getUsers(): void {
-    this.menusService.getMenuIdList().subscribe(menus => this.menus = menus.menus); 
-    this.trainingsService.getTrainingIdList().subscribe(trainings => this.trainings = trainings.trainings); 
-    this.rolesService.getRoleIdList().subscribe(roles => this.roles = roles.roles); 
+    this.menusService.getMenuIdList().subscribe(menus => this.allMenus = menus.menus); 
+    this.trainingsService.getTrainingIdList().subscribe(trainings => this.allTrainings = trainings.trainings); 
+    this.rolesService.getRoleIdList().subscribe(roles => this.allRoles = roles.roles); 
     this.usersService.getUsers().subscribe(users => this.users = users);
   }
 
@@ -42,16 +46,145 @@ export class UsersComponent implements OnInit {
     console.log('Dodaj korisnicu');
   }
 
+  //******************************************************************** */
+  // 1. TRAININGS
+  //******************************************************************** */
+
   editUserTrainings(user: User) {
-    console.log('Dodaj trening korisniku ' + user.name);
+
+    if (!user.trainings) {
+      user.trainings = [];
+    }
+
+    // Populate userTrainings array
+    let userTrainings = [...user.trainings];
+
+    // Populate otherTrainings array
+    let otherTrainings = [];
+    this.allTrainings.forEach(training1 => {
+      let found = false;
+
+      user.trainings.forEach(t => {
+        if (t.id == training1.id) {
+          found = true;
+        }
+      })
+
+      if (!found) {
+        otherTrainings.push(training1);
+      }
+    });
+
+    // Show Dialog
+    const dialogRef = this.dialog.open(EditUserTrainingsDialogComponent, {
+      width: '500px', data: { 
+        userTrainings: userTrainings,
+        otherTrainings: otherTrainings
+      }
+    });
+
+    // Save Dialog Results
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        user.trainings = userTrainings;
+        // TODO: call service
+      }
+
+    }); 
   }
+
+  //******************************************************************** */
+  // 2. MENUS
+  //******************************************************************** */
 
   editUserMenus(user: User) {
-    console.log('Dodaj meni korisniku ' + user.name);
+
+    if (!user.menus) {
+      user.menus = [];
+    }
+
+    // Populate userMenus array
+    let userMenus = [...user.menus];
+
+    // Populate otherMenus array
+    let otherMenus = [];
+    this.allMenus.forEach(menu1 => {
+      let found = false;
+
+      user.menus.forEach(m => {
+        if (m.id == menu1.id) {
+          found = true;
+        }
+      })
+
+      if (!found) {
+        otherMenus.push(menu1);
+      }
+    });
+
+    // Show Dialog
+    const dialogRef = this.dialog.open(EditUserMenusDialogComponent, {
+      width: '500px', data: { 
+        userMenus: userMenus,
+        otherMenus: otherMenus
+      }
+    });
+
+    // Save Dialog Results
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        user.menus = userMenus;
+        // TODO: call service
+      }
+
+    }); 
   }
 
+  //******************************************************************** */
+  // 3. ROLES
+  //******************************************************************** */
+
   editUserRoles(user: User) {
-    console.log('Dodaj ulogu korisniku ' + user.name);
+
+    if (!user.roles) {
+      user.roles = [];
+    }
+
+    // Populate userRoles array
+    let userRoles = [...user.roles];
+
+    // Populate otherRoles array
+    let otherRoles = [];
+    this.allRoles.forEach(role1 => {
+      let found = false;
+
+      user.roles.forEach(r => {
+        if (r.id == role1.id) {
+          found = true;
+        }
+      })
+
+      if (!found) {
+        otherRoles.push(role1);
+      }
+    });
+
+    // Show Dialog
+    const dialogRef = this.dialog.open(EditUserRolesDialogComponent, {
+      width: '500px', data: { 
+        userRoles: userRoles,
+        otherRoles: otherRoles
+      }
+    });
+
+    // Save Dialog Results
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        user.roles = userRoles;
+        // TODO: call service
+      }
+
+    }); 
   }
   
 }

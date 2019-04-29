@@ -78,16 +78,15 @@ export class MenuDetailsComponent implements OnInit {
       this.menu.users = [];
     }
 
+    // Populate menuUsers array
     let menuUsers = [];
-
     this.menu.users.forEach(user => {
       menuUsers.push(user);
     });
 
+    // Populate otherUsers array
     let otherUsers = [];
-
     this.users.forEach(user1 => {
-
       let found = false;
       this.menu.users.forEach(menuUser => {
         if (menuUser.id == user1.id) {
@@ -98,9 +97,9 @@ export class MenuDetailsComponent implements OnInit {
       if (!found) {
         otherUsers.push(user1);
       }
-
     });
 
+    // Show Dialog
     const dialogRef = this.dialog.open(EditMenuUsersDialogComponent, {
       width: '500px', data: { 
         menuUsers: menuUsers,
@@ -108,8 +107,8 @@ export class MenuDetailsComponent implements OnInit {
       }
     });
 
+    // Save Dialog Results
     dialogRef.afterClosed().subscribe(result => {
-
       if (result) {
         this.menu.users = menuUsers;
         this.updateUsersRequest.emit(this.menu);

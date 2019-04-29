@@ -41,6 +41,12 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     MatTooltipModule,
     MatChipsModule,
     FitUsersModuleRoutingModule
+  ],
+  entryComponents: [
+    EditUserMenusDialogComponent,
+    EditUserTrainingsDialogComponent,
+    EditUserRolesDialogComponent,
+    EditUserDetailsDialogComponent
   ]
 })
 export class FitUsersModuleModule { }
