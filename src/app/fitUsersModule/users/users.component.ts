@@ -79,7 +79,8 @@ export class UsersComponent implements OnInit {
     const dialogRef = this.dialog.open(EditUserTrainingsDialogComponent, {
       width: '500px', data: { 
         userTrainings: userTrainings,
-        otherTrainings: otherTrainings
+        otherTrainings: otherTrainings,
+        user: user
       }
     });
 
@@ -126,7 +127,8 @@ export class UsersComponent implements OnInit {
     const dialogRef = this.dialog.open(EditUserMenusDialogComponent, {
       width: '500px', data: { 
         userMenus: userMenus,
-        otherMenus: otherMenus
+        otherMenus: otherMenus,
+        user: user
       }
     });
 
@@ -173,7 +175,8 @@ export class UsersComponent implements OnInit {
     const dialogRef = this.dialog.open(EditUserRolesDialogComponent, {
       width: '500px', data: { 
         userRoles: userRoles,
-        otherRoles: otherRoles
+        otherRoles: otherRoles,
+        user: user
       }
     });
 
