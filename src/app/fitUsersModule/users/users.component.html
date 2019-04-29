@@ -22,10 +22,10 @@
     <mat-header-cell *matHeaderCellDef>Meni</mat-header-cell>
     <mat-cell *matCellDef="let user">       
         <mat-chip-list *ngFor="let menu of user.menus">
-            <mat-chip color="primary" selected matTooltip="Uredi menije">{{menu.name}}</mat-chip>&nbsp;
+            <mat-chip color="primary" selected matTooltip="Uredi menije" (click)="editUserMenus(user)">{{menu.name}}</mat-chip>&nbsp;
         </mat-chip-list>
         <div *ngIf="user.menus.length == 0">
-            <mat-icon aria-label="Add" (click)="addUserMenu(user)" matTooltip="Dodaj meni">add_circle_outline</mat-icon>
+            <mat-icon aria-label="Add" (click)="editUserMenus(user)" matTooltip="Dodaj meni">add_circle_outline</mat-icon>
         </div>
      </mat-cell>
   </ng-container>
@@ -34,10 +34,10 @@
     <mat-header-cell *matHeaderCellDef>Trening</mat-header-cell>
     <mat-cell *matCellDef="let user">
           <mat-chip-list *ngFor="let training of user.trainings">
-              <mat-chip color="primary" selected matTooltip="Uredi treninge">{{training.name}}</mat-chip>&nbsp;
+              <mat-chip color="primary" selected matTooltip="Uredi treninge" (click)="editUserTrainings(user)">{{training.name}}</mat-chip>&nbsp;
           </mat-chip-list>
           <div *ngIf="user.trainings.length == 0">
-              <mat-icon aria-label="Add" (click)="addUserTraining(user)" matTooltip="Dodaj trening">add_circle_outline</mat-icon>
+              <mat-icon aria-label="Add" (click)="editUserTrainings(user)" matTooltip="Dodaj trening">add_circle_outline</mat-icon>
           </div>
     </mat-cell>
   </ng-container>
@@ -46,10 +46,10 @@
     <mat-header-cell *matHeaderCellDef>Uloga</mat-header-cell>
     <mat-cell *matCellDef="let user">
         <mat-chip-list *ngFor="let role of user.roles">
-            <mat-chip matTooltip="Uredi uloge">{{role.name}}</mat-chip>&nbsp;
+            <mat-chip matTooltip="Uredi uloge" (click)="editUserRoles(user)">{{role.name}}</mat-chip>&nbsp;
         </mat-chip-list>   
         <div *ngIf="user.roles.length == 0">
-            <mat-icon aria-label="Add" (click)="addUserRole(user)" matTooltip="Dodaj ulogu">add_circle_outline</mat-icon>
+            <mat-icon aria-label="Add" (click)="editUserRoles(user)" matTooltip="Dodaj ulogu">add_circle_outline</mat-icon>
         </div>           
     </mat-cell>
   </ng-container>

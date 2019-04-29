@@ -42,15 +42,15 @@ export class UsersComponent implements OnInit {
     console.log('Dodaj korisnicu');
   }
 
-  addUserTraining(user: User) {
+  editUserTrainings(user: User) {
     console.log('Dodaj trening korisniku ' + user.name);
   }
 
-  addUserMenu(user: User) {
+  editUserMenus(user: User) {
     console.log('Dodaj meni korisniku ' + user.name);
   }
 
-  addUserRole(user: User) {
+  editUserRoles(user: User) {
     console.log('Dodaj ulogu korisniku ' + user.name);
   }
   
