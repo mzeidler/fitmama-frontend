@@ -14,6 +14,7 @@ import { EditUserMenusDialogComponent } from './edit-user-menus-dialog/edit-user
 import { EditUserTrainingsDialogComponent } from './edit-user-trainings-dialog/edit-user-trainings-dialog.component';
 import { EditUserRolesDialogComponent } from './edit-user-roles-dialog/edit-user-roles-dialog.component';
 import { UserMyfitComponent } from './user-myfit/user-myfit.component';
+import { EditUserDetailsDialogComponent } from './edit-user-details-dialog/edit-user-details-dialog.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { UserMyfitComponent } from './user-myfit/user-myfit.component';
     EditUserMenusDialogComponent,
     EditUserTrainingsDialogComponent,
     EditUserRolesDialogComponent,
-    UserMyfitComponent],
+    UserMyfitComponent,
+    EditUserDetailsDialogComponent],
   imports: [
     CommonModule,
     BrowserModule,
