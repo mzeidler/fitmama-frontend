@@ -6,6 +6,10 @@ import { catchError, map, tap } from 'rxjs/operators';
 import {environment} from '../../environments/environment';
 import { UserIdList } from '../model/useridlist';
 
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
+
 @Injectable({
   providedIn: 'root'
 })
@@ -43,4 +47,24 @@ export class UsersService {
     };
   }
 
+  updateTrainings(user: User): Observable<User> {
+    // TODO: Implement in backend
+    return this.http.post<User>(this.usersUrl + "/updatetrainings", user, httpOptions).pipe(
+      catchError(this.handleError<User>('updateTrainings'))
+    );
+  }
+
+  updateMenus(user: User): Observable<User> {
+    // TODO: Implement in backend
+    return this.http.post<User>(this.usersUrl + "/updatemenus", user, httpOptions).pipe(
+      catchError(this.handleError<User>('updateMenus'))
+    );
+  }
+
+  updateRoles(user: User): Observable<User> {
+    // TODO: Implement in backend
+    return this.http.post<User>(this.usersUrl + "/updateroles", user, httpOptions).pipe(
+      catchError(this.handleError<User>('updateRoles'))
+    );
+  }
 }

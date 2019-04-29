@@ -88,7 +88,7 @@ export class UsersComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         user.trainings = userTrainings;
-        // TODO: call service
+        this.usersService.updateTrainings(user).subscribe();
       }
 
     }); 
@@ -136,7 +136,7 @@ export class UsersComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         user.menus = userMenus;
-        // TODO: call service
+        this.usersService.updateMenus(user).subscribe();
       }
 
     }); 
@@ -184,7 +184,7 @@ export class UsersComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         user.roles = userRoles;
-        // TODO: call service
+        this.usersService.updateRoles(user).subscribe();
       }
 
     }); 
