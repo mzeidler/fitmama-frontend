@@ -1,3 +1,32 @@
-<p>
-  edit-user-menus-dialog works!
-</p>
+<h1 mat-dialog-title>Meniji za korisnicu {{user.name}}</h1>
+
+<div style="width:48%; float:left">
+    <span class="mat-body">Koristi menije</span>
+    <div
+        cdkDropList
+        #todoList="cdkDropList"
+        [cdkDropListData]="data.userMenus"
+        [cdkDropListConnectedTo]="[doneList]"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)">
+        <button mat-raised-button color="primary" class="example-margin" *ngFor="let menu of data.userMenus" cdkDrag>{{menu.name}}</button>
+    </div>
+</div>
+
+<div style="width:48%; float:right">
+    <span class="mat-body">Ne koristi menije</span>
+    <div
+        cdkDropList
+        #doneList="cdkDropList"
+        [cdkDropListData]="data.otherMenus"
+        [cdkDropListConnectedTo]="[todoList]"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)">
+        <button mat-raised-button color="primary" class="example-margin" *ngFor="let menu of data.otherMenus" cdkDrag>{{menu.name}}</button>
+    </div>   
+</div>
+
+<div mat-dialog-actions style="float: right">
+    <button mat-button (click)="onNoClick()">Odustani</button>
+    <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+</div>
