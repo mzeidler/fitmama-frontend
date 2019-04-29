@@ -26,4 +26,17 @@ export class UsersComponent implements OnInit {
   addUser(): void {
     console.log('Dodaj korisnicu');
   }
+
+  addUserTraining(user: User) {
+    console.log('Dodaj trening korisniku ' + user.name);
+  }
+
+  addUserMenu(user: User) {
+    console.log('Dodaj meni korisniku ' + user.name);
+  }
+
+  addUserRole(user: User) {
+    console.log('Dodaj ulogu korisniku ' + user.name);
+  }
+  
 }
