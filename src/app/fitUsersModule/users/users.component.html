@@ -28,6 +28,7 @@
                     [allMenus]="allMenus"
                     [allTrainings]="allTrainings"
                     [allRoles]="allRoles"
+                    (deleteRequest)="deleteUser($event)"
                     (updateMenusRequest)="editUserMenus($event)"
                     (updateTrainingsRequest)="editUserTrainings($event)"
                     (updateRolesRequest)="editUserRoles($event)"

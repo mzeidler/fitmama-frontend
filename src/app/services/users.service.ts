@@ -70,4 +70,9 @@ export class UsersService {
       catchError(this.handleError<User>('addUser'))
     );
   }
+
+  deleteUser(user: User) {
+    return this.http.delete(this.usersUrl + "/delete/" + user.id, httpOptions).subscribe();
+  }
+
 }

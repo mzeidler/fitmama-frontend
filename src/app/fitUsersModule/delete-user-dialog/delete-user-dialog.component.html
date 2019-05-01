@@ -1,0 +1,9 @@
+<div mat-dialog-title>
+    Da li želite obrisati korisnicu {{data.user.name}}?
+    </div>
+    
+    <div mat-dialog-actions style="float: right">
+        <button mat-button (click)="onNoClick()">Ne</button>
+        <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Da</button>
+    </div>
+    

@@ -7,6 +7,7 @@ import { MatDialog } from '@angular/material';
 import { EditUserRolesDialogComponent } from '../edit-user-roles-dialog/edit-user-roles-dialog.component';
 import { EditUserMenusDialogComponent } from '../edit-user-menus-dialog/edit-user-menus-dialog.component';
 import { EditUserTrainingsDialogComponent } from '../edit-user-trainings-dialog/edit-user-trainings-dialog.component';
+import { DeleteUserDialogComponent } from '../delete-user-dialog/delete-user-dialog.component';
 
 @Component({
   selector: 'app-user-details',
@@ -28,6 +29,12 @@ export class UserDetailsComponent implements OnInit {
   allRoles: Role[]; 
 
   @Output() 
+  deleteRequest = new EventEmitter<User>();
+
+  @Output() 
+  updateRequest = new EventEmitter<User>();
+
+  @Output() 
   updateMenusRequest = new EventEmitter<User>();
 
   @Output() 
@@ -47,6 +54,19 @@ export class UserDetailsComponent implements OnInit {
 
   deleteUser() {
 
+    const dialogRef = this.dialog.open(DeleteUserDialogComponent, {
+      width: '430px', data: { 
+        title: 'Obriši korisnicu', 
+        user: this.user}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+
+      if (result) {
+        this.deleteRequest.emit(this.user);  
+      }
+
+    }); 
   }
 
   editMenus() {

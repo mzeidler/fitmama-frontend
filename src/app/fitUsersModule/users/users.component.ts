@@ -75,6 +75,11 @@ export class UsersComponent implements OnInit {
     });     
   }
 
+  deleteUser(user: User) {
+    this.usersService.deleteUser(user);
+    this.users = this.users.filter(u => u.id != user.id);    
+  }
+
   editUserTrainings(user: User) {
     this.usersService.updateTrainings(user).subscribe();
   }

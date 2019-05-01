@@ -18,6 +18,7 @@ import { EditUserDetailsDialogComponent } from './edit-user-details-dialog/edit-
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { DeleteUserDialogComponent } from './delete-user-dialog/delete-user-dialog.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
     EditUserTrainingsDialogComponent,
     EditUserRolesDialogComponent,
     UserMyfitComponent,
-    EditUserDetailsDialogComponent],
+    EditUserDetailsDialogComponent,
+    DeleteUserDialogComponent],
   imports: [
     CommonModule,
     BrowserModule,
@@ -52,7 +54,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
     EditUserMenusDialogComponent,
     EditUserTrainingsDialogComponent,
     EditUserRolesDialogComponent,
-    EditUserDetailsDialogComponent
+    EditUserDetailsDialogComponent,
+    DeleteUserDialogComponent
   ]
 })
 export class FitUsersModuleModule { }
