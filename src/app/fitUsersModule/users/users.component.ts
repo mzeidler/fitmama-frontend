@@ -87,7 +87,7 @@ export class UsersComponent implements OnInit {
     // Save Dialog Results
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        user.trainings = userTrainings;
+        user.trainings = userTrainings.sort((a,b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0));
         this.usersService.updateTrainings(user).subscribe();
       }
 
@@ -135,7 +135,7 @@ export class UsersComponent implements OnInit {
     // Save Dialog Results
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        user.menus = userMenus;
+        user.menus = userMenus.sort((a,b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0));
         this.usersService.updateMenus(user).subscribe();
       }
 
@@ -183,7 +183,7 @@ export class UsersComponent implements OnInit {
     // Save Dialog Results
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        user.roles = userRoles;
+        user.roles = userRoles.sort((a,b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0));
         this.usersService.updateRoles(user).subscribe();
       }
 
