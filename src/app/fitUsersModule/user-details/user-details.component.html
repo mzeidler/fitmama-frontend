@@ -1,1 +1,20 @@
-user-details
+<div style="float: right">
+        <button mat-icon-button>
+            <mat-icon aria-label="Edit" matTooltip="Uredi korisnicu" (click)="editUser()">edit</mat-icon>
+          </button>
+          <button mat-icon-button>
+            <mat-icon aria-label="Remove" matTooltip="Obriši korisnicu" (click)="deleteUser()">delete_forever</mat-icon>
+          </button> 
+          <button mat-icon-button >
+            <mat-icon aria-label="Users" matTooltip="Meniji" (click)="editMenus()" matBadge="{{user.menus ? user.menus.length : 0}}">restaurant</mat-icon>
+          </button>  
+          <button mat-icon-button >
+            <mat-icon aria-label="Users" matTooltip="Treninzi" (click)="editTrainings()" matBadge="{{user.trainings ? user.trainings.length : 0}}">directions_run</mat-icon>
+          </button>         
+          <button mat-icon-button >
+            <mat-icon aria-label="Users" matTooltip="Uloge" (click)="editRoles()" matBadge="{{user.roles ? user.roles.length : 0}}">visibility</mat-icon>
+          </button>                   
+</div>
+<p>
+Mjerenja
+</p>

@@ -5,7 +5,7 @@ import { FitUsersModuleRoutingModule } from './fit-users-module-routing.module';
 import { UserMenusComponent } from './user-menus/user-menus.component';
 import { UsersComponent } from './users/users.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
-import { MatTableModule, MatInputModule, MatButtonModule, MatIconModule, MatTooltipModule, MatDialogModule } from '@angular/material';
+import { MatTableModule, MatInputModule, MatButtonModule, MatIconModule, MatTooltipModule, MatDialogModule, MatExpansionModule, MatBadgeModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { ArrayPipe } from '../pipes/arraypipe';
@@ -44,6 +44,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
     MatChipsModule,
     MatRadioModule,
     MatGridListModule,
+    MatExpansionModule,
+    MatBadgeModule,
     FitUsersModuleRoutingModule
   ],
   entryComponents: [

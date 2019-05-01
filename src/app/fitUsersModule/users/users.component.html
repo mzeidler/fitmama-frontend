@@ -9,51 +9,31 @@
 
 </p>
 
-<mat-table [dataSource]="users" class="mat-elevation-z8">
-
-  <ng-container matColumnDef="name">
-    <mat-header-cell *matHeaderCellDef>Ime i prezime</mat-header-cell>
-    <mat-cell *matCellDef="let user">
-        <mat-chip color="accent" selected matTooltip="Uredi korisnicu" (click)="editUser(user)">{{user.name}}</mat-chip>       
-    </mat-cell>
-  </ng-container>
-
-  <ng-container matColumnDef="menus">
-    <mat-header-cell *matHeaderCellDef>Meni</mat-header-cell>
-    <mat-cell *matCellDef="let user">       
-        <mat-chip-list *ngFor="let menu of user.menus">
-            <mat-chip color="primary" selected matTooltip="Uredi menije" (click)="editUserMenus(user)">{{menu.name}}</mat-chip>&nbsp;
-        </mat-chip-list>
-        <div *ngIf="user.menus.length == 0">
-            <mat-icon aria-label="Add" (click)="editUserMenus(user)" matTooltip="Dodaj meni">add_circle_outline</mat-icon>
+<p>
+    <mat-accordion class="example-headers-align">
+        <div *ngFor="let user of users">
+            <p>
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            <p><b>{{user.name}}</b></p>
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            <p></p>
+                            <p></p>                            
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <app-user-details
+                    [user]="user"
+                    [allMenus]="allMenus"
+                    [allTrainings]="allTrainings"
+                    [allRoles]="allRoles"
+                    (updateMenusRequest)="editUserMenus($event)"
+                    (updateTrainingsRequest)="editUserTrainings($event)"
+                    (updateRolesRequest)="editUserRoles($event)"
+                    ></app-user-details>                    
+                </mat-expansion-panel>
+            </p>
         </div>
-     </mat-cell>
-  </ng-container>
-
-  <ng-container matColumnDef="trainings">
-    <mat-header-cell *matHeaderCellDef>Trening</mat-header-cell>
-    <mat-cell *matCellDef="let user">
-          <mat-chip-list *ngFor="let training of user.trainings">
-              <mat-chip color="primary" selected matTooltip="Uredi treninge" (click)="editUserTrainings(user)">{{training.name}}</mat-chip>&nbsp;
-          </mat-chip-list>
-          <div *ngIf="user.trainings.length == 0">
-              <mat-icon aria-label="Add" (click)="editUserTrainings(user)" matTooltip="Dodaj trening">add_circle_outline</mat-icon>
-          </div>
-    </mat-cell>
-  </ng-container>
-
-  <ng-container matColumnDef="roles">
-    <mat-header-cell *matHeaderCellDef>Uloga</mat-header-cell>
-    <mat-cell *matCellDef="let user">
-        <mat-chip-list *ngFor="let role of user.roles">
-            <mat-chip matTooltip="Uredi uloge" (click)="editUserRoles(user)">{{role.name}}</mat-chip>&nbsp;
-        </mat-chip-list>   
-        <div *ngIf="user.roles.length == 0">
-            <mat-icon aria-label="Add" (click)="editUserRoles(user)" matTooltip="Dodaj ulogu">add_circle_outline</mat-icon>
-        </div>           
-    </mat-cell>
-  </ng-container>
-
-  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-</mat-table>
+    </mat-accordion>
+</p>

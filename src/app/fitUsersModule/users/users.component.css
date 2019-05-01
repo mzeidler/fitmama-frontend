@@ -1,28 +1,9 @@
-table {
-    width: 95%;
+.example-headers-align .mat-expansion-panel-header-title,
+.example-headers-align .mat-expansion-panel-header-description {
+    flex-basis: 0;
 }
-
-.mat-table__wrapper .mat-table {
-    min-width: auto !important;
-    width: 100% !important;
-}
-
-.mat-column-name {
-    flex: 1 1 25% !important;
-    min-width: 100px !important;
-}
-
-.mat-column-menus {
-    flex: 3 3 25% !important;
-    min-width: 200px !important;
-}
-
-.mat-column-trainings {
-    flex: 3 3 25% !important;
-    min-width: 200px !important;
-}
-
-.mat-column-roles {
-    flex: 3 3 25% !important;
-    min-width: 200px !important;
+  
+.example-headers-align .mat-expansion-panel-header-description {
+    justify-content: space-between;
+    align-items: center;
 }

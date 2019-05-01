@@ -75,148 +75,16 @@ export class UsersComponent implements OnInit {
     });     
   }
 
-  //******************************************************************** */
-  // 1. TRAININGS
-  //******************************************************************** */
-
   editUserTrainings(user: User) {
-
-    if (!user.trainings) {
-      user.trainings = [];
-    }
-
-    // Populate userTrainings array
-    let userTrainings = [...user.trainings];
-
-    // Populate otherTrainings array
-    let otherTrainings = [];
-    this.allTrainings.forEach(training1 => {
-      let found = false;
-
-      user.trainings.forEach(t => {
-        if (t.id == training1.id) {
-          found = true;
-        }
-      })
-
-      if (!found) {
-        otherTrainings.push(training1);
-      }
-    });
-
-    // Show Dialog
-    const dialogRef = this.dialog.open(EditUserTrainingsDialogComponent, {
-      width: '500px', data: { 
-        userTrainings: userTrainings,
-        otherTrainings: otherTrainings,
-        user: user
-      }
-    });
-
-    // Save Dialog Results
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        user.trainings = userTrainings.sort((a,b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0));
-        this.usersService.updateTrainings(user).subscribe();
-      }
-
-    }); 
+    this.usersService.updateTrainings(user).subscribe();
   }
-
-  //******************************************************************** */
-  // 2. MENUS
-  //******************************************************************** */
 
   editUserMenus(user: User) {
-
-    if (!user.menus) {
-      user.menus = [];
-    }
-
-    // Populate userMenus array
-    let userMenus = [...user.menus];
-
-    // Populate otherMenus array
-    let otherMenus = [];
-    this.allMenus.forEach(menu1 => {
-      let found = false;
-
-      user.menus.forEach(m => {
-        if (m.id == menu1.id) {
-          found = true;
-        }
-      })
-
-      if (!found) {
-        otherMenus.push(menu1);
-      }
-    });
-
-    // Show Dialog
-    const dialogRef = this.dialog.open(EditUserMenusDialogComponent, {
-      width: '500px', data: { 
-        userMenus: userMenus,
-        otherMenus: otherMenus,
-        user: user
-      }
-    });
-
-    // Save Dialog Results
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        user.menus = userMenus.sort((a,b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0));
-        this.usersService.updateMenus(user).subscribe();
-      }
-
-    }); 
+    this.usersService.updateMenus(user).subscribe();
   }
 
-  //******************************************************************** */
-  // 3. ROLES
-  //******************************************************************** */
-
   editUserRoles(user: User) {
-
-    if (!user.roles) {
-      user.roles = [];
-    }
-
-    // Populate userRoles array
-    let userRoles = [...user.roles];
-
-    // Populate otherRoles array
-    let otherRoles = [];
-    this.allRoles.forEach(role1 => {
-      let found = false;
-
-      user.roles.forEach(r => {
-        if (r.id == role1.id) {
-          found = true;
-        }
-      })
-
-      if (!found) {
-        otherRoles.push(role1);
-      }
-    });
-
-    // Show Dialog
-    const dialogRef = this.dialog.open(EditUserRolesDialogComponent, {
-      width: '500px', data: { 
-        userRoles: userRoles,
-        otherRoles: otherRoles,
-        user: user
-      }
-    });
-
-    // Save Dialog Results
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        user.roles = userRoles.sort((a,b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0));
-        this.usersService.updateRoles(user).subscribe();
-      }
-
-    }); 
+    this.usersService.updateRoles(user).subscribe();
   }
   
 }
