@@ -48,23 +48,26 @@ export class UsersService {
   }
 
   updateTrainings(user: User): Observable<User> {
-    // TODO: Implement in backend
     return this.http.post<User>(this.usersUrl + "/updatetrainings", user, httpOptions).pipe(
       catchError(this.handleError<User>('updateTrainings'))
     );
   }
 
   updateMenus(user: User): Observable<User> {
-    // TODO: Implement in backend
     return this.http.post<User>(this.usersUrl + "/updatemenus", user, httpOptions).pipe(
       catchError(this.handleError<User>('updateMenus'))
     );
   }
 
   updateRoles(user: User): Observable<User> {
-    // TODO: Implement in backend
     return this.http.post<User>(this.usersUrl + "/updateroles", user, httpOptions).pipe(
       catchError(this.handleError<User>('updateRoles'))
+    );
+  }
+
+  addUser(user: User): Observable<User> {
+    return this.http.post<User>(this.userUrl + "/save", user, httpOptions).pipe(
+      catchError(this.handleError<User>('addUser'))
     );
   }
 }
