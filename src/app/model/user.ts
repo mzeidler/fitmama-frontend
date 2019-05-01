@@ -14,7 +14,7 @@ export class User {
     zipcode: string;
     mobile: string;
     email: string;
-    birthDate: Date;
+    birthDate: string;
     height: number;
 
     menus: Menu[];
