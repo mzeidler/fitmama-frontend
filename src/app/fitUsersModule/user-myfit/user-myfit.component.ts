@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { User } from 'src/app/model/user';
+import { ActivatedRoute } from '@angular/router';
+import { UsersService } from 'src/app/services/users.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-user-myfit',
@@ -7,9 +11,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserMyfitComponent implements OnInit {
 
-  constructor() { }
+  @Input()
+  user: User;
+
+  constructor(
+    private route: ActivatedRoute,
+    private usersService: UsersService,
+    private location: Location
+  ) {}
 
   ngOnInit() {
+    this.getUser();
+  }
+
+  getUser(): void {
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.usersService.getUser(id)
+      .subscribe(user => this.user = user);
+  }
+
+  goBack(): void {
+    this.location.back();
   }
 
 }
