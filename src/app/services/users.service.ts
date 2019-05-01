@@ -75,4 +75,9 @@ export class UsersService {
     return this.http.delete(this.usersUrl + "/delete/" + user.id, httpOptions).subscribe();
   }
 
+  updateUser(user: User): Observable<User> {
+    return this.http.post<User>(this.userUrl + "/save", user, httpOptions).pipe(
+      catchError(this.handleError<User>('updateUser'))
+    );
+  }
 }

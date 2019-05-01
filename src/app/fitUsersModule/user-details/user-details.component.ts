@@ -8,6 +8,7 @@ import { EditUserRolesDialogComponent } from '../edit-user-roles-dialog/edit-use
 import { EditUserMenusDialogComponent } from '../edit-user-menus-dialog/edit-user-menus-dialog.component';
 import { EditUserTrainingsDialogComponent } from '../edit-user-trainings-dialog/edit-user-trainings-dialog.component';
 import { DeleteUserDialogComponent } from '../delete-user-dialog/delete-user-dialog.component';
+import { EditUserDetailsDialogComponent } from '../edit-user-details-dialog/edit-user-details-dialog.component';
 
 @Component({
   selector: 'app-user-details',
@@ -49,6 +50,35 @@ export class UserDetailsComponent implements OnInit {
   }
 
   editUser() {
+
+    // Show Dialog
+    const dialogRef = this.dialog.open(EditUserDetailsDialogComponent, {
+      width: '650px', data: { 
+        add: false,
+        user: {...this.user},
+      }
+    });
+
+    // Save Dialog Results
+    dialogRef.afterClosed().subscribe(result => {
+
+      if (result) {
+        this.user.username = result.user.username;
+        this.user.firstName = result.user.firstName;
+        this.user.lastName = result.user.lastName;
+        this.user.gender = result.user.gender;
+        this.user.address = result.user.address;
+        this.user.city = result.user.city;
+        this.user.zipcode = result.user.zipcode;
+        this.user.mobile = result.user.mobile;
+        this.user.email = result.user.email;
+        this.user.birthDate = result.user.birthDate;
+        this.user.height = result.user.height;                    
+        this.user.name = this.getName(this.user);
+        this.updateRequest.emit(this.user);
+      }
+
+    }); 
 
   }
 
@@ -200,5 +230,28 @@ export class UserDetailsComponent implements OnInit {
       }
 
     }); 
+  }
+
+  public getName(user: User): string {
+
+    let name = '';
+
+    if (user.firstName) {
+      name = user.firstName + " ";
+    }
+
+    if (user.lastName) {
+      name = name + user.lastName;
+    }
+
+    if (name.length == 0 && user.username) {
+      name = user.username;
+    }
+
+    if (name.length == 0) {
+      name = "User id=" + user.id;
+    }
+
+    return name;
   }
 }
