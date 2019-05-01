@@ -12,6 +12,7 @@ import { MatDialog } from '@angular/material';
 import { EditUserMenusDialogComponent } from '../edit-user-menus-dialog/edit-user-menus-dialog.component';
 import { EditUserTrainingsDialogComponent } from '../edit-user-trainings-dialog/edit-user-trainings-dialog.component';
 import { EditUserRolesDialogComponent } from '../edit-user-roles-dialog/edit-user-roles-dialog.component';
+import { EditUserDetailsDialogComponent } from '../edit-user-details-dialog/edit-user-details-dialog.component';
 
 @Component({
   selector: 'app-users',
@@ -42,8 +43,36 @@ export class UsersComponent implements OnInit {
     this.usersService.getUsers().subscribe(users => this.users = users);
   }
 
+  //******************************************************************** */
+  // ADD USER
+  //******************************************************************** */
+
   addUser(): void {
-    console.log('Dodaj korisnicu');
+    let user = <User>{};
+    user.gender = 'F';
+    this.editUser(user);
+  }
+
+  //******************************************************************** */
+  // EDIT USER
+  //******************************************************************** */
+  editUser(user: User) {
+
+    // Show Dialog
+    const dialogRef = this.dialog.open(EditUserDetailsDialogComponent, {
+      width: '650px', data: { 
+        add: user.id == undefined,
+        user: user,
+      }
+    });
+
+    // Save Dialog Results
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        // Save user
+      }
+
+    });     
   }
 
   //******************************************************************** */

@@ -14,7 +14,7 @@
   <ng-container matColumnDef="name">
     <mat-header-cell *matHeaderCellDef>Ime i prezime</mat-header-cell>
     <mat-cell *matCellDef="let user">
-        <mat-chip color="accent" selected matTooltip="Uredi korisnicu">{{user.name}}</mat-chip>       
+        <mat-chip color="accent" selected matTooltip="Uredi korisnicu" (click)="editUser(user)">{{user.name}}</mat-chip>       
     </mat-cell>
   </ng-container>
 

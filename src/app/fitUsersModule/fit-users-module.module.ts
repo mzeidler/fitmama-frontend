@@ -16,6 +16,8 @@ import { EditUserRolesDialogComponent } from './edit-user-roles-dialog/edit-user
 import { UserMyfitComponent } from './user-myfit/user-myfit.component';
 import { EditUserDetailsDialogComponent } from './edit-user-details-dialog/edit-user-details-dialog.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     MatIconModule,
     MatTooltipModule,
     MatChipsModule,
+    MatRadioModule,
+    MatGridListModule,
     FitUsersModuleRoutingModule
   ],
   entryComponents: [

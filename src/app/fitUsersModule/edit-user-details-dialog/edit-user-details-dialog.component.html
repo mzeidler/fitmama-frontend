@@ -1,3 +1,84 @@
-<p>
-  edit-user-details-dialog works!
-</p>
+<h1 mat-dialog-title>{{data.add ? 'Dodaj korisnicu' : 'Uredi korisnicu ' + data.user.name}}</h1>
+
+<div mat-dialog-content>
+
+    <mat-grid-list cols="3" rowHeight="100px">
+
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <mat-form-field>
+                <input matInput [(ngModel)]="data.user.firstName" placeholder="ime">
+              </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <mat-form-field>
+                <input matInput [(ngModel)]="data.user.lastName" placeholder="prezime">
+              </mat-form-field>  
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <mat-form-field>
+                <input matInput [(ngModel)]="data.user.username" placeholder="korisničko ime">
+              </mat-form-field> 
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <mat-form-field>
+                <input matInput [(ngModel)]="data.user.address" placeholder="adresa">
+              </mat-form-field> 
+        </mat-grid-tile>        
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <mat-form-field>
+                <input matInput [(ngModel)]="data.user.zipcode" placeholder="poštanski broj">
+            </mat-form-field> 
+        </mat-grid-tile>        
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <mat-form-field>
+                <input matInput [(ngModel)]="data.user.city" placeholder="grad">
+            </mat-form-field> 
+        </mat-grid-tile>        
+
+       
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <mat-form-field>
+                <input matInput [(ngModel)]="data.user.mobile" placeholder="telefon">
+            </mat-form-field> 
+        </mat-grid-tile>        
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <mat-form-field>
+                <input matInput [(ngModel)]="data.user.email" placeholder="email">
+            </mat-form-field>
+        </mat-grid-tile>        
+ 
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <mat-form-field>
+                <input matInput [(ngModel)]="data.user.birthdate" placeholder="dan rođenja">
+            </mat-form-field> 
+        </mat-grid-tile>         
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <mat-form-field>
+                <input matInput [(ngModel)]="data.user.height" placeholder="visina">
+            </mat-form-field> 
+        </mat-grid-tile> 
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <mat-radio-group style="float: left" [(ngModel)]="data.user.gender" aria-label="Select an option" placeholder="spol">
+                <mat-radio-button value="M">m</mat-radio-button>&nbsp;
+                <mat-radio-button value="F">ž</mat-radio-button>
+              </mat-radio-group>
+        </mat-grid-tile> 
+
+      </mat-grid-list>
+
+</div>
+
+<div mat-dialog-actions style="float: right">
+    <button mat-button (click)="onNoClick()">Zatvori</button>
+    <button mat-button [mat-dialog-close]="data.user" cdkFocusInitial>Spremi</button>
+</div>
