@@ -49,8 +49,31 @@ export class UsersComponent implements OnInit {
 
   addUser(): void {
     let user = <User>{};
+    user.menus = [];
+    user.roles = [];
+    user.trainings = [];
     user.gender = 'F';
     
+    // Show Dialog
+    const dialogRef = this.dialog.open(EditUserDetailsDialogComponent, {
+      width: '650px', data: { 
+        add: true,
+        user: {...user},
+      }
+    });
+
+
+    // Save Dialog Results
+    dialogRef.afterClosed().subscribe(result => {
+    
+      if (result) {
+        this.usersService.updateUser(result.user).subscribe(u => {
+          this.users.push(u);
+        }); 
+      }
+    
+    });   
+
     // TODO: Implement
   }
 
