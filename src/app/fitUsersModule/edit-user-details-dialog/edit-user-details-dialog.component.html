@@ -57,7 +57,7 @@
  
         <mat-grid-tile [colspan]="1" [rowspan]="1">
             <mat-form-field>
-                <input matInput [(ngModel)]="data.user.birthDate" placeholder="dan rođenja">
+                <input matInput [(ngModel)]="data.user.birthDate" placeholder="datum rođenja">
             </mat-form-field> 
         </mat-grid-tile>         
 
@@ -80,5 +80,5 @@
 
 <div mat-dialog-actions style="float: right">
     <button mat-button (click)="onNoClick()">Zatvori</button>
-    <button mat-button [mat-dialog-close]="data.user" cdkFocusInitial>Spremi</button>
+    <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Spremi</button>
 </div>
