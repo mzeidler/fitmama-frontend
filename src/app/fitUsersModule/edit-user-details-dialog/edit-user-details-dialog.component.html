@@ -1,4 +1,6 @@
-<h1 mat-dialog-title>{{data.add ? 'Dodaj korisnicu' : 'Uredi korisnicu ' + data.user.name}}</h1>
+<h1 mat-dialog-title *ngIf="!data.myfit">{{data.add ? 'Dodaj korisnicu' : 'Uredi korisnicu ' + data.user.name}}</h1>
+
+<h1 mat-dialog-title *ngIf="data.myfit">Uredi osobne podatke</h1>
 
 <div mat-dialog-content>
 
@@ -19,7 +21,7 @@
 
         <mat-grid-tile [colspan]="1" [rowspan]="1">
             <mat-form-field>
-                <input matInput [(ngModel)]="data.user.username" placeholder="korisničko ime">
+                <input matInput [disabled]="data.myfit" [(ngModel)]="data.user.username" placeholder="korisničko ime">
               </mat-form-field> 
         </mat-grid-tile>
 

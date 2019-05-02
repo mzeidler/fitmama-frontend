@@ -55,6 +55,7 @@ export class UserDetailsComponent implements OnInit {
     const dialogRef = this.dialog.open(EditUserDetailsDialogComponent, {
       width: '650px', data: { 
         add: false,
+        myfit: false,
         user: {...this.user},
       }
     });
