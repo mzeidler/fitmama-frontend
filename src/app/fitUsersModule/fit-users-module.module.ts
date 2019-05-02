@@ -19,6 +19,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { DeleteUserDialogComponent } from './delete-user-dialog/delete-user-dialog.component';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { DeleteUserDialogComponent } from './delete-user-dialog/delete-user-dial
     MatGridListModule,
     MatExpansionModule,
     MatBadgeModule,
+    MatMenuModule,
     FitUsersModuleRoutingModule
   ],
   entryComponents: [
