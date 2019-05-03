@@ -6,4 +6,6 @@ export class Training {
     name: string;
     trainingDays: TrainingDay[];
     users: User[];
+    currentContent: string;
+    currentName: string;
 }

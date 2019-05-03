@@ -6,4 +6,6 @@ export class Menu {
     name: string;
     menuDays: MenuDay[];
     users: User[];
+    currentContent: string;
+    currentName: string;
 }
