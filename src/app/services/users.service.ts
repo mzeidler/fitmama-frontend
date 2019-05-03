@@ -5,6 +5,7 @@ import { User } from '../model/user';
 import { catchError, map, tap } from 'rxjs/operators';
 import {environment} from '../../environments/environment';
 import { UserIdList } from '../model/useridlist';
+import { Measurement } from '../model/measurement';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -16,6 +17,7 @@ const httpOptions = {
 export class UsersService {
 
   private usersUrl = `//${environment.resturl}:9001/api/users`;
+  private measurementsUrl = `//${environment.resturl}:9001/api/measurements`;
   private userUrl = `//${environment.resturl}:9001/api/user`;
 
   constructor(private http: HttpClient) { 
@@ -78,6 +80,12 @@ export class UsersService {
   updateUser(user: User): Observable<User> {
     return this.http.post<User>(this.userUrl + "/save", user, httpOptions).pipe(
       catchError(this.handleError<User>('updateUser'))
+    );
+  }
+
+  addMeasurement(user: User, measurement: Measurement) : Observable<Measurement> {
+    return this.http.post<Measurement>(this.measurementsUrl + "/add/" + user.id, measurement, httpOptions).pipe(
+      catchError(this.handleError<Measurement>('addUser'))
     );
   }
 }
