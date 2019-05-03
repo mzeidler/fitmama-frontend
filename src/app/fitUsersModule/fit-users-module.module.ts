@@ -5,7 +5,7 @@ import { FitUsersModuleRoutingModule } from './fit-users-module-routing.module';
 import { UserMenusComponent } from './user-menus/user-menus.component';
 import { UsersComponent } from './users/users.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
-import { MatTableModule, MatInputModule, MatButtonModule, MatIconModule, MatTooltipModule, MatDialogModule, MatExpansionModule, MatBadgeModule, MatNativeDateModule } from '@angular/material';
+import { MatTableModule, MatInputModule, MatButtonModule, MatIconModule, MatTooltipModule, MatDialogModule, MatExpansionModule, MatBadgeModule, MatNativeDateModule, DateAdapter, NativeDateAdapter, MAT_DATE_LOCALE, MAT_DATE_FORMATS } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { ArrayPipe } from '../pipes/arraypipe';
@@ -22,6 +22,8 @@ import { DeleteUserDialogComponent } from './delete-user-dialog/delete-user-dial
 import { MatMenuModule } from '@angular/material/menu';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { MeasurementsDialogComponent } from './measurements-dialog/measurements-dialog.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatMomentDateModule, MomentDateAdapter, MAT_MOMENT_DATE_FORMATS } from '@angular/material-moment-adapter';
 
 @NgModule({
   declarations: [
@@ -54,7 +56,9 @@ import { MeasurementsDialogComponent } from './measurements-dialog/measurements-
     MatBadgeModule,
     MatMenuModule,
     CKEditorModule,
-    FitUsersModuleRoutingModule
+    FitUsersModuleRoutingModule,
+    MatDatepickerModule,
+    MatMomentDateModule
   ],
   entryComponents: [
     EditUserMenusDialogComponent,
@@ -63,6 +67,9 @@ import { MeasurementsDialogComponent } from './measurements-dialog/measurements-
     EditUserDetailsDialogComponent,
     DeleteUserDialogComponent,
     MeasurementsDialogComponent
+  ],
+  providers: [
+    {provide: MAT_DATE_LOCALE, useValue: 'hr-HR'}
   ],
 })
 export class FitUsersModuleModule { }

@@ -10,6 +10,7 @@ import { TrainingsService } from 'src/app/services/trainings.service';
 import * as DecoupledEditor from '@ckeditor/ckeditor5-build-decoupled-document';
 import { MeasurementsDialogComponent } from '../measurements-dialog/measurements-dialog.component';
 import { Measurement } from 'src/app/model/measurement';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-user-myfit',
@@ -116,14 +117,17 @@ export class UserMyfitComponent implements OnInit {
     const dialogRef = this.dialog.open(MeasurementsDialogComponent, {
       width: '700px', data: { 
         meas: {...measurement},
+        day: moment(new Date())
       }
     });
 
-            // Save Dialog Results
+    // Save Dialog Results
     dialogRef.afterClosed().subscribe(result => {
 
       if (result) {
+        console.log('day=' + this.convertToString(result.day.toDate()));
         // TODO: Under Construction
+
       }
 
     }); 
