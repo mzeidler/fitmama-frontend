@@ -8,6 +8,8 @@ import { EditUserDetailsDialogComponent } from '../edit-user-details-dialog/edit
 import { MenusService } from 'src/app/services/menus.service';
 import { TrainingsService } from 'src/app/services/trainings.service';
 import * as DecoupledEditor from '@ckeditor/ckeditor5-build-decoupled-document';
+import { MeasurementsDialogComponent } from '../measurements-dialog/measurements-dialog.component';
+import { Measurement } from 'src/app/model/measurement';
 
 @Component({
   selector: 'app-user-myfit',
@@ -35,7 +37,6 @@ export class UserMyfitComponent implements OnInit {
   }
 
   getUser(): void {
-    console.log("LOADING USER");
     const id = +this.route.snapshot.paramMap.get('id');
     this.usersService.getUser(id).subscribe(user => { 
 
@@ -103,6 +104,26 @@ export class UserMyfitComponent implements OnInit {
         this.user.height = result.user.height;                    
         this.user.name = this.getName(this.user);
         this.usersService.updateUser(this.user).subscribe(); 
+      }
+
+    }); 
+  }
+
+  addMeasurement() {
+    let measurement = <Measurement>{};
+
+    // Show Dialog
+    const dialogRef = this.dialog.open(MeasurementsDialogComponent, {
+      width: '700px', data: { 
+        meas: {...measurement},
+      }
+    });
+
+            // Save Dialog Results
+    dialogRef.afterClosed().subscribe(result => {
+
+      if (result) {
+        // TODO: Under Construction
       }
 
     }); 

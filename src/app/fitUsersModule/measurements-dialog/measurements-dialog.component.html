@@ -1,0 +1,72 @@
+<h1 mat-dialog-title>Mjerenja</h1>
+
+<div mat-dialog-content>
+
+  <mat-grid-list cols="3" rowHeight="100px">
+
+    <!-- TODO: DatePicker-->
+
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <mat-form-field>
+        <input matInput [(ngModel)]="data.meas.value1" placeholder="opseg grudi">
+        <span matSuffix>cm</span>
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <mat-form-field>
+        <input matInput [(ngModel)]="data.meas.value2" placeholder="opseg struka">
+        <span matSuffix>cm</span>
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <mat-form-field>
+        <input matInput [(ngModel)]="data.meas.value3" placeholder="opseg bokova">
+        <span matSuffix>cm</span>
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <mat-form-field>
+        <input matInput [(ngModel)]="data.meas.value4" placeholder="opseg bedara">
+        <span matSuffix>cm</span>
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <mat-form-field>
+        <input matInput [(ngModel)]="data.meas.value5" placeholder="opseg desnog bedra">
+        <span matSuffix>cm</span>
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <mat-form-field>
+        <input matInput [(ngModel)]="data.meas.value6" placeholder="opseg desnog lista">
+        <span matSuffix>cm</span>
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <mat-form-field>
+        <input matInput [(ngModel)]="data.meas.value7" placeholder="opseg desne nadlaktice">
+        <span matSuffix>cm</span>
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <mat-form-field>
+        <input matInput [(ngModel)]="data.meas.value8" placeholder="broj kilograma">
+        <span matSuffix>kg</span>
+      </mat-form-field>
+    </mat-grid-tile>
+
+  </mat-grid-list>
+
+</div>
+
+<div mat-dialog-actions style="float: right">
+  <button mat-button (click)="onNoClick()">Odustani</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+</div>
