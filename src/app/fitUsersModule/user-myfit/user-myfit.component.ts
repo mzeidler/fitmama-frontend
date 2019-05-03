@@ -111,12 +111,11 @@ export class UserMyfitComponent implements OnInit {
   }
 
   addMeasurement() {
-    let measurement = <Measurement>{};
 
     // Show Dialog
     const dialogRef = this.dialog.open(MeasurementsDialogComponent, {
       width: '700px', data: { 
-        meas: {...measurement},
+        meas: <Measurement>{},
         day: moment(new Date())
       }
     });
@@ -125,9 +124,9 @@ export class UserMyfitComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
 
       if (result) {
-        console.log('day=' + this.convertToString(result.day.toDate()));
-        // TODO: Under Construction
-
+        let measurement = result.meas;
+        measurement.day = this.convertToString(result.day.toDate());
+        this.usersService.addMeasurement(this.user, measurement).subscribe();
       }
 
     }); 
