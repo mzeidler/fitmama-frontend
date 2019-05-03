@@ -27,8 +27,7 @@
               <p><b>{{menu.currentName}}</b></p>
             </mat-panel-description>
           </mat-expansion-panel-header>
-          <div [innerHTML]="menu.currentContent"></div>
-          
+          <ckeditor class="mat-body" [config]="{ toolbar: [ ] }" [(ngModel)]="menu.currentContent" [editor]="Editor" (ready)="onReady($event)"></ckeditor>
         </mat-expansion-panel>
       </p>
     </div>
@@ -44,7 +43,7 @@
               <p><b>{{training.currentName}}</b></p>
             </mat-panel-description>
           </mat-expansion-panel-header>
-          <div [innerHTML]="training.currentContent"></div>
+          <ckeditor class="mat-body" [config]="{ toolbar: [ ] }" [(ngModel)]="training.currentContent" [editor]="Editor" (ready)="onReady($event)"></ckeditor>
         </mat-expansion-panel>
       </p>
     </div>

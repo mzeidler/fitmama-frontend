@@ -20,6 +20,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { DeleteUserDialogComponent } from './delete-user-dialog/delete-user-dialog.component';
 import { MatMenuModule } from '@angular/material/menu';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { MatMenuModule } from '@angular/material/menu';
     MatExpansionModule,
     MatBadgeModule,
     MatMenuModule,
+    CKEditorModule,
     FitUsersModuleRoutingModule
   ],
   entryComponents: [

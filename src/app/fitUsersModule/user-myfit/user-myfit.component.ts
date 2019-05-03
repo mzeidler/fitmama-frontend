@@ -7,6 +7,7 @@ import { MatDialog } from '@angular/material';
 import { EditUserDetailsDialogComponent } from '../edit-user-details-dialog/edit-user-details-dialog.component';
 import { MenusService } from 'src/app/services/menus.service';
 import { TrainingsService } from 'src/app/services/trainings.service';
+import * as DecoupledEditor from '@ckeditor/ckeditor5-build-decoupled-document';
 
 @Component({
   selector: 'app-user-myfit',
@@ -14,6 +15,8 @@ import { TrainingsService } from 'src/app/services/trainings.service';
   styleUrls: ['./user-myfit.component.css']
 })
 export class UserMyfitComponent implements OnInit {
+
+  public Editor = DecoupledEditor;
 
   @Input()
   user: User;
@@ -135,4 +138,17 @@ export class UserMyfitComponent implements OnInit {
     return  year + "-" + (month < 10 ? "0" : "") + month + "-" + (day < 10 ? "0" : "") + day;
   }
 
+  public onReady(editor) {
+
+    editor.isReadOnly = true;
+    editor.editing.view.change( writer => {
+      writer.setAttribute( 'spellcheck', 'false', editor.editing.view.document.getRoot() );
+    } );
+
+    editor.ui.getEditableElement().parentElement.insertBefore(
+        editor.ui.view.toolbar.element,
+        editor.ui.getEditableElement()
+    );
+
+  }
 }
