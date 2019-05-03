@@ -6,6 +6,7 @@ import { Menu } from '../model/menu';
 import { MenuDay } from '../model/menuday';
 import { catchError, map, tap } from 'rxjs/operators';
 import { MenuIdList } from '../model/menuidlist';
+import { DayContent } from '../model/daycontent';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -98,5 +99,11 @@ export class MenusService {
     return this.http.post<MenuDay>(this.menusUrl + "/copyday/" + menuDayId, menuDay, httpOptions).pipe(
       catchError(this.handleError<MenuDay>('copyDay'))
     );
+  }
+
+  getDayContent(menuId: number, day: string): Observable<DayContent> {
+    return this.http.get<DayContent>(this.menusUrl + "/content/" + menuId + "/" + day, httpOptions).pipe(
+      catchError(this.handleError<DayContent>('getDayContent'))
+    );    
   }
 }

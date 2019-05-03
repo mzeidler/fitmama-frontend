@@ -1,4 +1,4 @@
-<div>
+<div *ngIf="user">
   <p>
     <button mat-raised-button [matMenuTriggerFor]="menu"><b>{{user.name}}</b></button>
     <mat-menu #menu="matMenu">
@@ -6,10 +6,14 @@
       <button mat-menu-item>Promjena lozinke</button>
       <button mat-menu-item>Logout</button>
     </mat-menu>
+
+    <button mat-icon-button>
+        <mat-icon aria-label="Refresh" (click)="getUser()" matTooltip="Osvježi">autorenew</mat-icon>
+    </button>    
   </p>
 </div>
 
-<div>
+<div *ngIf="user">
   <mat-accordion class="example-headers-align">
 
     <div *ngFor="let menu of user.menus">
@@ -20,10 +24,11 @@
               <p><b>Meni "{{menu.name}}"</b></p>
             </mat-panel-title>
             <mat-panel-description>
-              <p><b></b></p>
+              <p><b>{{menu.currentName}}</b></p>
             </mat-panel-description>
           </mat-expansion-panel-header>
-          Meni
+          <div [innerHTML]="menu.currentContent"></div>
+          
         </mat-expansion-panel>
       </p>
     </div>
@@ -36,10 +41,10 @@
               <p><b>Trening "{{training.name}}"</b></p>
             </mat-panel-title>
             <mat-panel-description>
-              <p><b></b></p>
+              <p><b>{{training.currentName}}</b></p>
             </mat-panel-description>
           </mat-expansion-panel-header>
-          Trening
+          <div [innerHTML]="training.currentContent"></div>
         </mat-expansion-panel>
       </p>
     </div>

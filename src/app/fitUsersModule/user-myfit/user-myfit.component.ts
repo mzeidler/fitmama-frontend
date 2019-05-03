@@ -5,6 +5,8 @@ import { UsersService } from 'src/app/services/users.service';
 import { Location } from '@angular/common';
 import { MatDialog } from '@angular/material';
 import { EditUserDetailsDialogComponent } from '../edit-user-details-dialog/edit-user-details-dialog.component';
+import { MenusService } from 'src/app/services/menus.service';
+import { TrainingsService } from 'src/app/services/trainings.service';
 
 @Component({
   selector: 'app-user-myfit',
@@ -20,7 +22,9 @@ export class UserMyfitComponent implements OnInit {
     private route: ActivatedRoute,
     private usersService: UsersService,
     private location: Location,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private menusService: MenusService,
+    private trainingsService: TrainingsService
   ) {}
 
   ngOnInit() {
@@ -28,9 +32,41 @@ export class UserMyfitComponent implements OnInit {
   }
 
   getUser(): void {
+    console.log("LOADING USER");
     const id = +this.route.snapshot.paramMap.get('id');
-    this.usersService.getUser(id)
-      .subscribe(user => this.user = user);
+    this.usersService.getUser(id).subscribe(user => { 
+
+      this.user = user;
+
+      // LOAD CURRENT MENUS
+      let now = new Date();
+      let day = this.convertToString(now);
+
+      this.user.menus.forEach(m => {
+        this.menusService.getDayContent(m.id, day).subscribe(dayContent => {
+          if (dayContent) {
+            m.currentContent = dayContent.content;
+            m.currentName = dayContent.name;
+          } else {
+            m.currentContent = "Za danas nije zadan Meni";
+          }
+        });
+      });
+
+      // LOAD CURRENT TRAINIGS
+      this.user.trainings.forEach(t => {
+        this.trainingsService.getDayContent(t.id, day).subscribe(dayContent => {
+          if (dayContent) {
+            t.currentContent = dayContent.content;
+            t.currentName = dayContent.name;
+          } else {
+            t.currentContent = "Za danas nije zadan Trening";
+          }
+        });
+      });
+      
+      // LOAD MEASUREMENTS
+    });
   }
 
   goBack(): void {
@@ -91,4 +127,12 @@ export class UserMyfitComponent implements OnInit {
 
     return name;
   }
+
+  convertToString(date: Date): string {
+    let year = date.getFullYear();
+    let month = date.getMonth() + 1;
+    let day = date.getDate();
+    return  year + "-" + (month < 10 ? "0" : "") + month + "-" + (day < 10 ? "0" : "") + day;
+  }
+
 }

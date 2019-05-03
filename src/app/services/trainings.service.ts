@@ -6,6 +6,7 @@ import { Training } from '../model/training';
 import { TrainingDay } from '../model/trainingday';
 import { catchError, map, tap } from 'rxjs/operators';
 import { TrainingIdList } from '../model/trainingidlist';
+import { DayContent } from '../model/daycontent';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -99,4 +100,10 @@ export class TrainingsService {
       catchError(this.handleError<TrainingDay>('copyDay'))
     );
   }  
+
+  getDayContent(trainingId: number, day: string): Observable<DayContent> {
+    return this.http.get<DayContent>(this.trainingsUrl + "/content/" + trainingId + "/" + day, httpOptions).pipe(
+      catchError(this.handleError<DayContent>('getDayContent'))
+    );    
+  }
 }
