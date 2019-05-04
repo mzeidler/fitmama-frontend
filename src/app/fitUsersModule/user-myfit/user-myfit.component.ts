@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { User } from 'src/app/model/user';
 import { ActivatedRoute } from '@angular/router';
 import { UsersService } from 'src/app/services/users.service';
@@ -11,6 +11,7 @@ import * as DecoupledEditor from '@ckeditor/ckeditor5-build-decoupled-document';
 import { MeasurementsDialogComponent } from '../measurements-dialog/measurements-dialog.component';
 import { Measurement } from 'src/app/model/measurement';
 import * as moment from 'moment';
+import { MeasurementListComponent } from '../measurement-list/measurement-list.component';
 
 @Component({
   selector: 'app-user-myfit',
@@ -23,6 +24,9 @@ export class UserMyfitComponent implements OnInit {
 
   @Input()
   user: User;
+
+  @ViewChild(MeasurementListComponent)
+  measurementListComponent: MeasurementListComponent;
 
   measurements: Measurement[];
 
@@ -73,8 +77,11 @@ export class UserMyfitComponent implements OnInit {
       });
       
       // LOAD MEASUREMENTS
-      this.usersService.getMeasurements(this.user).subscribe(m => this.measurements = m);
-
+      this.usersService.getMeasurements(this.user).subscribe(m => {
+        this.measurements = m;
+        this.measurementListComponent.load();
+      });
+    
     });
   }
 
@@ -130,7 +137,11 @@ export class UserMyfitComponent implements OnInit {
       if (result) {
         let measurement = result.meas;
         measurement.day = this.convertToString(result.day.toDate());
-        this.usersService.addMeasurement(this.user, measurement).subscribe();
+        this.usersService.addMeasurement(this.user, measurement).subscribe(m => {
+          this.measurements.push(m);
+          this.measurements.sort((a,b) => (a.day > b.day) ? -1 : ((b.day > a.day) ? 1 : 0));
+          this.measurementListComponent.load();
+        });
       }
 
     }); 

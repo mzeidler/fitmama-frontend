@@ -20,12 +20,13 @@ export class MeasurementListComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    
-    this.dataSource = new MatTableDataSource<Measurement>(this.measurements);
-    this.dataSource.paginator = this.paginator;
+    this.load();
   }
 
-  load() {
+  public load() {
+    if (this.measurements) {
+      this.measurements.sort((a,b) => (a.day > b.day) ? -1 : ((b.day > a.day) ? 1 : 0));
+    }
     this.dataSource = new MatTableDataSource<Measurement>(this.measurements);
     this.dataSource.paginator = this.paginator;
   }
