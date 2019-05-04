@@ -85,6 +85,10 @@ export class UserMyfitComponent implements OnInit {
     });
   }
 
+  load() {
+    this.measurementListComponent.load();
+  }
+
   goBack(): void {
     this.location.back();
   }
