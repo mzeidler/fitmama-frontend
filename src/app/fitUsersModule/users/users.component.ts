@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewChildren, QueryList } from '@angular/core';
 import { UsersService} from '../../services/users.service'
 import { User } from '../../model/user';
 import { ActivatedRoute } from '@angular/router';
@@ -13,6 +13,7 @@ import { EditUserMenusDialogComponent } from '../edit-user-menus-dialog/edit-use
 import { EditUserTrainingsDialogComponent } from '../edit-user-trainings-dialog/edit-user-trainings-dialog.component';
 import { EditUserRolesDialogComponent } from '../edit-user-roles-dialog/edit-user-roles-dialog.component';
 import { EditUserDetailsDialogComponent } from '../edit-user-details-dialog/edit-user-details-dialog.component';
+import { UserDetailsComponent } from '../user-details/user-details.component';
 
 @Component({
   selector: 'app-users',
@@ -26,6 +27,10 @@ export class UsersComponent implements OnInit {
   allRoles: Role[];
   users: User[];
   displayedColumns: string[] = ['name', 'menus', 'trainings', 'roles'];
+
+
+  @ViewChildren(UserDetailsComponent)
+  userDetailsComponentList: QueryList<UserDetailsComponent>;
 
   constructor(public dialog: MatDialog, private usersService: UsersService, private menusService: MenusService, private trainingsService: TrainingsService, private rolesService: RolesService, private route: ActivatedRoute) { }
 
@@ -44,11 +49,9 @@ export class UsersComponent implements OnInit {
   }
 
   load(user: User) {
-
     this.usersService.getMeasurements(user).subscribe(m => {
       user.measurements = m;
     });
-
   }
 
   //******************************************************************** */

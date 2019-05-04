@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { User } from '../../model/user';
 import { Menu } from 'src/app/model/menu';
 import { Training } from 'src/app/model/training';
@@ -9,6 +9,7 @@ import { EditUserMenusDialogComponent } from '../edit-user-menus-dialog/edit-use
 import { EditUserTrainingsDialogComponent } from '../edit-user-trainings-dialog/edit-user-trainings-dialog.component';
 import { DeleteUserDialogComponent } from '../delete-user-dialog/delete-user-dialog.component';
 import { EditUserDetailsDialogComponent } from '../edit-user-details-dialog/edit-user-details-dialog.component';
+import { MeasurementListComponent } from '../measurement-list/measurement-list.component';
 
 @Component({
   selector: 'app-user-details',
@@ -44,9 +45,16 @@ export class UserDetailsComponent implements OnInit {
   @Output() 
   updateRolesRequest = new EventEmitter<User>();
 
+  @ViewChild(MeasurementListComponent)
+  measurementListComponent: MeasurementListComponent;
+  
   constructor(public dialog: MatDialog) {}
 
   ngOnInit() {
+  }
+
+  load() {
+    this.measurementListComponent.load();
   }
 
   editUser() {
