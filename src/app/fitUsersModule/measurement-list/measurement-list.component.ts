@@ -1,13 +1,20 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { Measurement } from 'src/app/model/measurement';
-import { MatPaginator, MatTableDataSource, MatDialog } from '@angular/material';
+import { MatPaginator, MatTableDataSource, MatDialog, MatPaginatorIntl } from '@angular/material';
 import { MeasurementsDialogComponent } from '../measurements-dialog/measurements-dialog.component';
 import * as moment from 'moment';
+import { CustomPaginator } from 'src/app/adapters/custompaginator';
 
 @Component({
   selector: 'app-measurement-list',
   templateUrl: './measurement-list.component.html',
-  styleUrls: ['./measurement-list.component.css']
+  styleUrls: ['./measurement-list.component.css'],
+  providers: [
+    {
+      provide: MatPaginatorIntl,
+      useClass: CustomPaginator
+    }
+  ]
 })
 export class MeasurementListComponent implements OnInit {
   
