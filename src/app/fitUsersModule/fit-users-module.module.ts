@@ -26,6 +26,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatMomentDateModule, MomentDateAdapter, MAT_MOMENT_DATE_FORMATS } from '@angular/material-moment-adapter';
 import { MeasurementListComponent } from './measurement-list/measurement-list.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { DeleteMeasurementDialogComponent } from './delete-measurement-dialog/delete-measurement-dialog.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     EditUserDetailsDialogComponent,
     DeleteUserDialogComponent,
     MeasurementsDialogComponent,
-    MeasurementListComponent],
+    MeasurementListComponent,
+    DeleteMeasurementDialogComponent],
   imports: [
     CommonModule,
     BrowserModule,
@@ -70,7 +72,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     EditUserRolesDialogComponent,
     EditUserDetailsDialogComponent,
     DeleteUserDialogComponent,
-    MeasurementsDialogComponent
+    MeasurementsDialogComponent,
+    DeleteMeasurementDialogComponent
   ],
   providers: [
     {provide: MAT_DATE_LOCALE, useValue: 'hr-HR'}
