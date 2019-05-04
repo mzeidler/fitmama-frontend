@@ -1,0 +1,58 @@
+<button mat-icon-button>
+  <mat-icon aria-label="Refresh" (click)="load()" matTooltip="Učitaj mjerenja">autorenew</mat-icon>
+</button>
+
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource">
+
+    <ng-container matColumnDef="day">
+      <th mat-header-cell *matHeaderCellDef>dan mjerenja</th>
+      <td mat-cell *matCellDef="let meas"> {{meas.day}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="value1">
+      <th mat-header-cell *matHeaderCellDef>opseg grudi</th>
+      <td mat-cell *matCellDef="let meas"> {{meas.value1}} {{meas.value1 ? 'cm' : ''}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="value2">
+      <th mat-header-cell *matHeaderCellDef>opseg struka</th>
+      <td mat-cell *matCellDef="let meas"> {{meas.value2}} {{meas.value2 ? 'cm' : ''}}</td>
+    </ng-container>
+    
+    <ng-container matColumnDef="value3">
+      <th mat-header-cell *matHeaderCellDef>opseg bokova</th>
+      <td mat-cell *matCellDef="let meas"> {{meas.value3}} {{meas.value3 ? 'cm' : ''}}</td>
+    </ng-container>
+    
+    <ng-container matColumnDef="value4">
+      <th mat-header-cell *matHeaderCellDef>opseg bedara</th>
+      <td mat-cell *matCellDef="let meas"> {{meas.value4}} {{meas.value4 ? 'cm' : ''}}</td>
+    </ng-container>
+    
+    <ng-container matColumnDef="value5">
+      <th mat-header-cell *matHeaderCellDef>opseg desnog bedra</th>
+      <td mat-cell *matCellDef="let meas"> {{meas.value5}} {{meas.value5 ? 'cm' : ''}}</td>
+    </ng-container>
+    
+    <ng-container matColumnDef="value6">
+      <th mat-header-cell *matHeaderCellDef>opseg desnog lista</th>
+      <td mat-cell *matCellDef="let meas"> {{meas.value6}} {{meas.value6 ? 'cm' : ''}}</td>
+    </ng-container>
+    
+    <ng-container matColumnDef="value7">
+      <th mat-header-cell *matHeaderCellDef>opseg desne nadlaktice</th>
+      <td mat-cell *matCellDef="let meas"> {{meas.value7}} {{meas.value7 ? 'cm' : ''}}</td>
+    </ng-container>
+    
+    <ng-container matColumnDef="value8">
+      <th mat-header-cell *matHeaderCellDef>broj kilograma</th>
+      <td mat-cell *matCellDef="let meas"> {{meas.value8}} {{meas.value8 ? 'kg' : ''}}</td>
+    </ng-container>    
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>

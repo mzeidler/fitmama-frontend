@@ -58,8 +58,10 @@
             <p><b></b></p>
           </mat-panel-description>
         </mat-expansion-panel-header>
-        <button mat-raised-button (click)="addMeasurement()">Dodaj mjerenje</button>
-        <p>Mjerenja</p>
+        <button mat-icon-button>
+          <mat-icon aria-label="Add" (click)="addMeasurement()" matTooltip="Dodaj mjerenj">add_circle_outline</mat-icon>
+        </button>
+        <app-measurement-list [measurements]="measurements"></app-measurement-list>
       </mat-expansion-panel>
     </p>
 

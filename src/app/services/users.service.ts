@@ -30,6 +30,12 @@ export class UsersService {
     );
   }
 
+  getMeasurements(user: User): Observable<Measurement[]> {
+    return this.http.get<Measurement[]>(this.measurementsUrl + "/" + user.id).pipe(
+      catchError(this.handleError('getMeasurements', []))
+    );
+  }
+
   getUserIdList(): Observable<UserIdList> {
     return this.http.get<UserIdList>(`${this.usersUrl}/short`).pipe(
       catchError(this.handleError<UserIdList>('getUserIdList'))

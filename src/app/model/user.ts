@@ -1,6 +1,7 @@
 import { Menu } from './menu';
 import { Training } from './training';
 import { Role } from './role';
+import { Measurement } from './measurement';
 
 export class User {
     id: number;
@@ -20,4 +21,5 @@ export class User {
     menus: Menu[];
     trainings: Training[];
     roles: Role[];
+    measurements: Measurement[];
 }

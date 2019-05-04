@@ -24,6 +24,8 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { MeasurementsDialogComponent } from './measurements-dialog/measurements-dialog.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatMomentDateModule, MomentDateAdapter, MAT_MOMENT_DATE_FORMATS } from '@angular/material-moment-adapter';
+import { MeasurementListComponent } from './measurement-list/measurement-list.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,8 @@ import { MatMomentDateModule, MomentDateAdapter, MAT_MOMENT_DATE_FORMATS } from 
     UserMyfitComponent,
     EditUserDetailsDialogComponent,
     DeleteUserDialogComponent,
-    MeasurementsDialogComponent],
+    MeasurementsDialogComponent,
+    MeasurementListComponent],
   imports: [
     CommonModule,
     BrowserModule,
@@ -58,7 +61,8 @@ import { MatMomentDateModule, MomentDateAdapter, MAT_MOMENT_DATE_FORMATS } from 
     CKEditorModule,
     FitUsersModuleRoutingModule,
     MatDatepickerModule,
-    MatMomentDateModule
+    MatMomentDateModule,
+    MatPaginatorModule
   ],
   entryComponents: [
     EditUserMenusDialogComponent,

@@ -24,6 +24,8 @@ export class UserMyfitComponent implements OnInit {
   @Input()
   user: User;
 
+  measurements: Measurement[];
+
   constructor(
     private route: ActivatedRoute,
     private usersService: UsersService,
@@ -71,6 +73,8 @@ export class UserMyfitComponent implements OnInit {
       });
       
       // LOAD MEASUREMENTS
+      this.usersService.getMeasurements(this.user).subscribe(m => this.measurements = m);
+
     });
   }
 
