@@ -70,7 +70,10 @@
 
   </mat-grid-list>
 
-  <button mat-button>Popuni zadnje mjerenje</button>
+  <div *ngIf="data.last">
+    <button mat-button (click)="fillLast()">Popuni zadnje mjerenje</button>
+  </div>
+  
 </div>
 
 <div mat-dialog-actions style="float: right">

@@ -54,7 +54,8 @@ export class MeasurementListComponent implements OnInit {
           width: '700px', data: { 
             meas: {...meas},
             day: moment(this.convertToDate(meas.day)),
-            canUpdateDay: false
+            canUpdateDay: false,
+            last: undefined
           }
         });
     

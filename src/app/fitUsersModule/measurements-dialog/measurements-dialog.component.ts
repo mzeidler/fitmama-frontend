@@ -22,5 +22,16 @@ export class MeasurementsDialogComponent implements OnInit {
   onNoClick(): void {
     this.dialogRef.close();
   }
+
+  fillLast() {
+    this.data.meas.value1 = this.data.last.value1;
+    this.data.meas.value2 = this.data.last.value2;
+    this.data.meas.value3 = this.data.last.value3;
+    this.data.meas.value4 = this.data.last.value4;
+    this.data.meas.value5 = this.data.last.value5;
+    this.data.meas.value6 = this.data.last.value6;
+    this.data.meas.value7 = this.data.last.value7;
+    this.data.meas.value8 = this.data.last.value8;
+  }
   
 }

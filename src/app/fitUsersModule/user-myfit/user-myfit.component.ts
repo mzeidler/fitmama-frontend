@@ -123,12 +123,20 @@ export class UserMyfitComponent implements OnInit {
 
   addMeasurement() {
 
+    let last: Measurement = undefined;
+
+    if (this.measurements && this.measurements.length > 0) {
+      last = this.measurements[0];
+    }
+
+    console.log("last=" + last);
     // Show Dialog
     const dialogRef = this.dialog.open(MeasurementsDialogComponent, {
       width: '700px', data: { 
         meas: <Measurement>{},
         day: moment(new Date()),
-        canUpdateDay: true
+        canUpdateDay: true,
+        last: last
       }
     });
 
