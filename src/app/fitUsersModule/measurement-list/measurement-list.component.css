@@ -1,3 +1,8 @@
 table {
     width: 100%;
 }
+
+td.mat-column-buttons {
+    width: 100px;
+    padding-right: 5px;
+}

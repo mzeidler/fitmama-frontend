@@ -12,7 +12,7 @@ export class MeasurementListComponent implements OnInit {
   @Input()
   measurements: Measurement[];
 
-  displayedColumns: string[] = [ 'day', 'value1', 'value2', 'value3', 'value4', 'value5', 'value6', 'value7', 'value8'];
+  displayedColumns: string[] = [ 'day', 'value1', 'value2', 'value3', 'value4', 'value5', 'value6', 'value7', 'value8', 'buttons'];
   dataSource = new MatTableDataSource<Measurement>(this.measurements);
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -30,4 +30,13 @@ export class MeasurementListComponent implements OnInit {
     this.dataSource = new MatTableDataSource<Measurement>(this.measurements);
     this.dataSource.paginator = this.paginator;
   }
+
+  editMeasurement(meas: Measurement) {
+
+  }
+
+  deleteMeasurement(meas: Measurement) {
+
+  }
+  
 }

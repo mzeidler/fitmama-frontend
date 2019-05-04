@@ -50,6 +50,21 @@
       <td mat-cell *matCellDef="let meas"> {{meas.value8}} {{meas.value8 ? 'kg' : ''}}</td>
     </ng-container>    
 
+    <ng-container matColumnDef="buttons">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let meas">
+
+        <button mat-icon-button>
+          <mat-icon aria-label="Refresh" (click)="editMeasurement(meas)" matTooltip="uredi mjerenje">edit</mat-icon>
+        </button>
+
+        <button mat-icon-button>
+          <mat-icon aria-label="Refresh" (click)="deleteMeasurement(meas)" matTooltip="obriši mjerenje">delete_forever</mat-icon>
+        </button>
+
+      </td>
+    </ng-container>   
+
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
