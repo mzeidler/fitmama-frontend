@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { Measurement } from 'src/app/model/measurement';
-import { MatPaginator, MatTableDataSource } from '@angular/material';
+import { MatPaginator, MatTableDataSource, MatDialog } from '@angular/material';
+import { MeasurementsDialogComponent } from '../measurements-dialog/measurements-dialog.component';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-measurement-list',
@@ -17,7 +19,7 @@ export class MeasurementListComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit() {
     this.load();
@@ -33,10 +35,37 @@ export class MeasurementListComponent implements OnInit {
 
   editMeasurement(meas: Measurement) {
 
+        // Show Dialog
+        const dialogRef = this.dialog.open(MeasurementsDialogComponent, {
+          width: '700px', data: { 
+            meas: {...meas},
+            day: moment(this.convertToDate(meas.day))
+          }
+        });
+    
+        // Save Dialog Results
+        dialogRef.afterClosed().subscribe(result => {
+    
+          if (result) {
+            let measurement = result.meas;
+            //measurement.day = this.convertToString(result.day.toDate());
+            //this.usersService.addMeasurement(this.user, measurement).subscribe(m => {
+            //  this.measurements.push(m);
+            //  this.measurements.sort((a,b) => (a.day > b.day) ? -1 : ((b.day > a.day) ? 1 : 0));
+            //  this.measurementListComponent.load();
+            //});
+          }
+    
+        }); 
+
   }
 
   deleteMeasurement(meas: Measurement) {
 
   }
   
+
+  convertToDate(date: string): Date {
+    return new Date(date + "T00:00:00")
+  }
 }
