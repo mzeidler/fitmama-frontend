@@ -13,7 +13,7 @@
     <mat-accordion class="example-headers-align">
         <div *ngFor="let user of users">
             <p>
-                <mat-expansion-panel>
+                <mat-expansion-panel (opened)="load(user)">
                     <mat-expansion-panel-header>
                         <mat-panel-title>
                             <p><b>{{user.name}}</b></p>

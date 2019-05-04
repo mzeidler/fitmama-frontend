@@ -43,6 +43,14 @@ export class UsersComponent implements OnInit {
     this.usersService.getUsers().subscribe(users => this.users = users);
   }
 
+  load(user: User) {
+
+    this.usersService.getMeasurements(user).subscribe(m => {
+      user.measurements = m;
+    });
+
+  }
+
   //******************************************************************** */
   // ADD USER
   //******************************************************************** */
@@ -75,7 +83,6 @@ export class UsersComponent implements OnInit {
     
     });   
 
-    // TODO: Implement
   }
 
   updateUser(user: User) {

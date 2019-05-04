@@ -16,5 +16,9 @@
           </button>                   
 </div>
 <p>
-Mjerenja
+<app-measurement-list 
+        (deleteRequest)="deleteMeasurement($event)"
+        (updateRequest)="updateMeasurement($event)"
+        [showbuttons]="false"
+        [measurements]="user.measurements"></app-measurement-list>
 </p>

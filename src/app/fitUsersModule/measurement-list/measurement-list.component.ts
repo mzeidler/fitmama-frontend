@@ -22,20 +22,31 @@ export class MeasurementListComponent implements OnInit {
   @Input()
   measurements: Measurement[];
 
+  @Input()
+  showbuttons: boolean;
+
   @Output() 
   deleteRequest = new EventEmitter<Measurement>();
 
   @Output() 
   updateRequest = new EventEmitter<Measurement>();
 
-  displayedColumns: string[] = [ 'day', 'value1', 'value2', 'value3', 'value4', 'value5', 'value6', 'value7', 'value8', 'buttons'];
+  displayedColumns: string[];
+
   dataSource = new MatTableDataSource<Measurement>(this.measurements);
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog) { 
+
+  }
 
   ngOnInit() {
+    if (this.showbuttons) {
+      this.displayedColumns = [ 'day', 'value1', 'value2', 'value3', 'value4', 'value5', 'value6', 'value7', 'value8', 'buttons'];
+    } else {
+      this.displayedColumns = [ 'day', 'value1', 'value2', 'value3', 'value4', 'value5', 'value6', 'value7', 'value8'];
+    }    
     this.load();
   }
 
