@@ -139,12 +139,21 @@ export class UserMyfitComponent implements OnInit {
         measurement.day = this.convertToString(result.day.toDate());
         this.usersService.addMeasurement(this.user, measurement).subscribe(m => {
           this.measurements.push(m);
-          this.measurements.sort((a,b) => (a.day > b.day) ? -1 : ((b.day > a.day) ? 1 : 0));
           this.measurementListComponent.load();
         });
       }
 
     }); 
+  }
+
+  updateMeasurement(m: Measurement) {
+    // TODO: Implement
+  }
+
+  deleteMeasurement(m: Measurement) {
+    this.usersService.deleteMeasurement(m);
+    this.measurements.splice(this.measurements.indexOf(m), 1);
+    this.measurementListComponent.load();    
   }
 
   public getName(user: User): string {

@@ -61,7 +61,10 @@
         <button mat-icon-button>
           <mat-icon aria-label="Add" (click)="addMeasurement()" matTooltip="Dodaj mjerenj">add_circle_outline</mat-icon>
         </button>
-        <app-measurement-list [measurements]="measurements"></app-measurement-list>
+        <app-measurement-list 
+        (deleteRequest)="deleteMeasurement($event)"
+        (updateRequest)="updateMeasurement($event)"
+        [measurements]="measurements"></app-measurement-list>
       </mat-expansion-panel>
     </p>
 

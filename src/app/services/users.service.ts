@@ -94,4 +94,8 @@ export class UsersService {
       catchError(this.handleError<Measurement>('addUser'))
     );
   }
+
+  deleteMeasurement(meas: Measurement) {
+    return this.http.delete(this.measurementsUrl + "/delete/" + meas.id, httpOptions).subscribe();
+  }  
 }

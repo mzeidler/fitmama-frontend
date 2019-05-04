@@ -1,9 +1,10 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, Output, EventEmitter } from '@angular/core';
 import { Measurement } from 'src/app/model/measurement';
 import { MatPaginator, MatTableDataSource, MatDialog, MatPaginatorIntl } from '@angular/material';
 import { MeasurementsDialogComponent } from '../measurements-dialog/measurements-dialog.component';
 import * as moment from 'moment';
 import { CustomPaginator } from 'src/app/adapters/custompaginator';
+import { DeleteMeasurementDialogComponent } from '../delete-measurement-dialog/delete-measurement-dialog.component';
 
 @Component({
   selector: 'app-measurement-list',
@@ -20,6 +21,12 @@ export class MeasurementListComponent implements OnInit {
   
   @Input()
   measurements: Measurement[];
+
+  @Output() 
+  deleteRequest = new EventEmitter<Measurement>();
+
+  @Output() 
+  updateRequest = new EventEmitter<Measurement>();
 
   displayedColumns: string[] = [ 'day', 'value1', 'value2', 'value3', 'value4', 'value5', 'value6', 'value7', 'value8', 'buttons'];
   dataSource = new MatTableDataSource<Measurement>(this.measurements);
@@ -54,13 +61,17 @@ export class MeasurementListComponent implements OnInit {
         dialogRef.afterClosed().subscribe(result => {
     
           if (result) {
-            let measurement = result.meas;
-            //measurement.day = this.convertToString(result.day.toDate());
-            //this.usersService.addMeasurement(this.user, measurement).subscribe(m => {
-            //  this.measurements.push(m);
-            //  this.measurements.sort((a,b) => (a.day > b.day) ? -1 : ((b.day > a.day) ? 1 : 0));
-            //  this.measurementListComponent.load();
-            //});
+            meas.day = result.meas.day;
+            meas.value1 = result.meas.value1;
+            meas.value2 = result.meas.value2;
+            meas.value3 = result.meas.value3;
+            meas.value4 = result.meas.value4;
+            meas.value5 = result.meas.value5;
+            meas.value6 = result.meas.value6;
+            meas.value7 = result.meas.value7;
+            meas.value8 = result.meas.value8;
+            this.updateRequest.emit(meas);
+
           }
     
         }); 
@@ -68,6 +79,20 @@ export class MeasurementListComponent implements OnInit {
   }
 
   deleteMeasurement(meas: Measurement) {
+
+    const dialogRef = this.dialog.open(DeleteMeasurementDialogComponent, {
+      width: '430px', data: { 
+        title: 'Obriši mjerenje'
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+
+      if (result) {
+        this.deleteRequest.emit(meas);  
+      }
+
+    }); 
 
   }
   
