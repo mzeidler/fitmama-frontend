@@ -53,7 +53,8 @@ export class MeasurementListComponent implements OnInit {
         const dialogRef = this.dialog.open(MeasurementsDialogComponent, {
           width: '700px', data: { 
             meas: {...meas},
-            day: moment(this.convertToDate(meas.day))
+            day: moment(this.convertToDate(meas.day)),
+            canUpdateDay: false
           }
         });
     

@@ -98,4 +98,10 @@ export class UsersService {
   deleteMeasurement(meas: Measurement) {
     return this.http.delete(this.measurementsUrl + "/delete/" + meas.id, httpOptions).subscribe();
   }  
+
+  updateMeasurement(meas: Measurement): Observable<Measurement> {
+    return this.http.post<Measurement>(this.measurementsUrl + "/update", meas, httpOptions).pipe(
+      catchError(this.handleError<Measurement>('updateMeasurement'))
+    );
+  }  
 }

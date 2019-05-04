@@ -127,7 +127,8 @@ export class UserMyfitComponent implements OnInit {
     const dialogRef = this.dialog.open(MeasurementsDialogComponent, {
       width: '700px', data: { 
         meas: <Measurement>{},
-        day: moment(new Date())
+        day: moment(new Date()),
+        canUpdateDay: true
       }
     });
 
@@ -147,7 +148,8 @@ export class UserMyfitComponent implements OnInit {
   }
 
   updateMeasurement(m: Measurement) {
-    // TODO: Implement
+    this.usersService.updateMeasurement(m).subscribe();
+    this.measurementListComponent.load();    
   }
 
   deleteMeasurement(m: Measurement) {
