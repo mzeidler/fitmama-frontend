@@ -17,6 +17,7 @@ export class User {
     email: string;
     birthDate: string;
     height: number;
+    password: string;
 
     menus: Menu[];
     trainings: Training[];
