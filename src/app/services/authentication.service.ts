@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { UsersService } from './users.service';
 import { User } from '../model/user';
-import { map } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
@@ -29,8 +28,8 @@ export class AuthenticationService {
         let subject = new Subject<boolean>();
         this.usersService.authenticateUser(user).subscribe(authenticatedUser => {
             if (authenticatedUser) {
-                localStorage.setItem('currentUser', JSON.stringify(user));
-                this.currentUserSubject.next(user);
+                localStorage.setItem('currentUser', JSON.stringify(authenticatedUser));
+                this.currentUserSubject.next(authenticatedUser);
                 subject.next(true);                
             } else {
                 subject.next(false);
