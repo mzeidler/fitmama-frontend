@@ -242,6 +242,14 @@ export class UserDetailsComponent implements OnInit {
     }); 
   }
 
+  deleteMeasurement(any) {
+    // dummy
+  }
+
+  updateMeasurement(any) {
+    // dummy
+  }
+
   public getName(user: User): string {
 
     let name = '';
