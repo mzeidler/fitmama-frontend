@@ -20,7 +20,13 @@ export class AuthGuard implements CanActivate {
                 route.data.roles.forEach(routeRole => {
                     currentUser.roles.forEach(userRole => {
                         if (!hasRole && (routeRole == userRole.role)) {
-                            hasRole = true;
+
+                            if (routeRole == "USER") {
+                                const id = +route.paramMap.get('id');
+                                hasRole = currentUser.id == id;
+                            } else {
+                                hasRole = true;
+                            }
                         }
                     });
                 });
