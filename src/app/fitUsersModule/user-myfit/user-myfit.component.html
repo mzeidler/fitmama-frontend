@@ -1,11 +1,6 @@
 <div *ngIf="user">
   <p>
-    <button mat-raised-button [matMenuTriggerFor]="menu"><b>{{user.name}}</b></button>
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item (click)="editUser()">Osobni podaci</button>
-      <button mat-menu-item>Promjena lozinke</button>
-      <button mat-menu-item>Logout</button>
-    </mat-menu>
+    <button mat-raised-button (click)="editUser()"><b>{{user.name}}</b></button>
 
     <button mat-icon-button>
         <mat-icon aria-label="Refresh" (click)="getUser()" matTooltip="Osvježi">autorenew</mat-icon>
