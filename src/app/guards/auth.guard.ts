@@ -33,7 +33,7 @@ export class AuthGuard implements CanActivate {
             }
 
             if (!hasRole) {
-                this.router.navigate(['/']);
+                this.router.navigate(['/home']);
                 return false;
             }
 
