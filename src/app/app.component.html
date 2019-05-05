@@ -1,13 +1,14 @@
-
-<mat-toolbar color="primary">
+<mat-toolbar color="primary" *ngIf="currentUser">
     <nav>
-        <button mat-raised-button color="accent" routerLink="/user/1" routerLinkActive="active">Moj Fit</button>&nbsp;
-        <button mat-raised-button color="accent" routerLink="/users" routerLinkActive="active">Korisnice</button>&nbsp;
-        <button mat-raised-button color="accent" routerLink="/trainings" routerLinkActive="active">Treninzi</button>&nbsp;
-        <button mat-raised-button color="accent" routerLink="/menus" routerLinkActive="active">Meni</button>&nbsp;
-        <button mat-raised-button color="accent" routerLink="/admin" routerLinkActive="active">Administracija</button>
+        <button mat-raised-button color="accent" routerLink="/" routerLinkActive="active">Fit Mama</button>&nbsp;
+        <button mat-raised-button color="accent" routerLink="/user/{{currentUser.id}}" routerLinkActive="active" *ngIf="isUser">Moj Fit</button>&nbsp;
+        <button mat-raised-button color="accent" routerLink="/users" routerLinkActive="active" *ngIf="isAdmin">Korisnice</button>&nbsp;
+        <button mat-raised-button color="accent" routerLink="/trainings" routerLinkActive="active" *ngIf="isExerciseAdmin">Treninzi</button>&nbsp;
+        <button mat-raised-button color="accent" routerLink="/menus" routerLinkActive="active" *ngIf="isMenuAdmin">Meni</button>&nbsp;
+        <button mat-raised-button color="accent" routerLink="/admin" routerLinkActive="active" *ngIf="isAdmin">Admin</button>&nbsp;   
+        <button mat-raised-button color="accent" (click)="logout()">Logout</button>
+
     </nav>
 </mat-toolbar>
 
 <router-outlet></router-outlet>
-
