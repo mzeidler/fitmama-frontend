@@ -8,9 +8,7 @@ import { LoginComponent } from './login/login.component';
 const appRoutes: Routes = [
   {
       path: '',
-      component: HomeComponent,
-      canActivate: [AuthGuard],
-      data: { roles: ['USER'] } 
+      component: HomeComponent
   },
 
   { 
