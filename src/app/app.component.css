@@ -1,3 +1,7 @@
 .active {
     text-decoration: underline;
 }
+
+.mymargin {
+    margin-right: 15px;
+}

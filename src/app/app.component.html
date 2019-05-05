@@ -1,12 +1,13 @@
 <mat-toolbar color="primary" *ngIf="currentUser">
     <nav>
-        <button mat-raised-button color="accent" routerLink="/" routerLinkActive="active">Fit Mama</button>&nbsp;
-        <button mat-raised-button color="accent" routerLink="/user/{{currentUser.id}}" routerLinkActive="active" *ngIf="isUser">Moj Fit</button>&nbsp;
-        <button mat-raised-button color="accent" routerLink="/users" routerLinkActive="active" *ngIf="isAdmin">Korisnice</button>&nbsp;
-        <button mat-raised-button color="accent" routerLink="/trainings" routerLinkActive="active" *ngIf="isExerciseAdmin">Treninzi</button>&nbsp;
-        <button mat-raised-button color="accent" routerLink="/menus" routerLinkActive="active" *ngIf="isMenuAdmin">Meni</button>&nbsp;
-        <button mat-raised-button color="accent" routerLink="/admin" routerLinkActive="active" *ngIf="isAdmin">Admin</button>&nbsp;   
-        <button mat-raised-button color="accent" (click)="logout()">Logout</button>
+        <button class="mymargin" mat-raised-button color="accent" routerLink="/" routerLinkActive="active">Fit Mama</button>
+        <button class="mymargin" mat-raised-button color="accent" routerLink="/user/{{currentUser.id}}" routerLinkActive="active" >Moj Fit</button>
+        
+        <button class="mymargin" mat-raised-button color="accent" routerLink="/users" routerLinkActive="active" *ngIf="isAdmin">Korisnice</button>
+        <button class="mymargin" mat-raised-button color="accent" routerLink="/trainings" routerLinkActive="active" *ngIf="isExerciseAdmin">Treninzi</button>
+        <button class="mymargin" mat-raised-button color="accent" routerLink="/menus" routerLinkActive="active" *ngIf="isMenuAdmin">Meni</button>
+        <button class="mymargin" mat-raised-button color="accent" routerLink="/admin" routerLinkActive="active" *ngIf="isAdmin">Admin</button> 
+        <button class="mymargin" mat-raised-button color="accent" (click)="logout()">Odjava</button>
 
     </nav>
 </mat-toolbar>
