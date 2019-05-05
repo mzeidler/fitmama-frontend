@@ -104,4 +104,10 @@ export class UsersService {
       catchError(this.handleError<Measurement>('updateMeasurement'))
     );
   }  
+
+  authenticateUser(user: User): Observable<User> {
+    return this.http.post<User>(this.userUrl + "/authenticate", user, httpOptions).pipe(
+      catchError(this.handleError<User>('updateUser'))
+    );
+  }
 }
