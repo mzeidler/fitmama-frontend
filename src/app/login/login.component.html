@@ -1,0 +1,23 @@
+<mat-card class="loginform">
+    <mat-card-header>
+        <mat-card-title></mat-card-title>
+        <mat-card-subtitle></mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <h1>Fit Mama</h1>
+        <p>
+            <mat-form-field>
+                <input matInput placeholder="korisničko ime" [(ngModel)]="username">
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field>
+                <input type="password" matInput placeholder="lozinka" [(ngModel)]="password">
+            </mat-form-field>
+        </p>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-raised-button (click)="login()">Prijava</button>
+        <mat-spinner style="float: right" [diameter]="30" *ngIf="loading"></mat-spinner>
+    </mat-card-actions>
+</mat-card>

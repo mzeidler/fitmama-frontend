@@ -1,0 +1,8 @@
+.loginform {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300px;    
+    margin-top: -150px; /* Half the height */
+    margin-left: -150px; /* Half the width */    
+}
