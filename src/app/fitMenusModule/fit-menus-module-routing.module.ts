@@ -4,15 +4,19 @@ import { MenusComponent } from './menus/menus.component';
 import { MenuDetailsComponent } from './menu-details/menu-details.component';
 import { MenusResolverService } from '../resolvers/menus-resolver.service';
 import { UserIdListResolverService } from '../resolvers/user-id-list-resolver.service';
+import { AuthGuard } from '../guards/auth.guard';
 
 const routes: Routes = [
-  { path: 'menus', component: MenusComponent, 
+  { 
+    path: 'menus', 
+    component: MenusComponent, 
     resolve:{
       useridlist: UserIdListResolverService,
       menus: MenusResolverService
-    }  
-  },
-  { path: 'menu/:id', component: MenuDetailsComponent }
+    },
+    canActivate: [AuthGuard],
+    data: { roles: ['MENU_ADMIN'] }
+  }
 ];
 
 @NgModule({

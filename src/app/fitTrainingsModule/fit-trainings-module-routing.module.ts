@@ -4,15 +4,19 @@ import { TrainingDetailsComponent } from './training-details/training-details.co
 import { TrainingsComponent } from './trainings/trainings.component';
 import { TrainingsResolverService } from '../resolvers/trainings-resolver.service';
 import { UserIdListResolverService } from '../resolvers/user-id-list-resolver.service';
+import { AuthGuard } from '../guards/auth.guard';
 
 const routes: Routes = [
-  { path: 'trainings', component: TrainingsComponent, 
+  { 
+    path: 'trainings', 
+    component: TrainingsComponent, 
     resolve:{
       useridlist: UserIdListResolverService,
       trainings: TrainingsResolverService
-    }
-  },
-  { path: 'training/:id', component: TrainingDetailsComponent }
+    },
+    canActivate: [AuthGuard],
+    data: { roles: ['EXERCISE_ADMIN'] }
+  }
 ];
 
 @NgModule({
