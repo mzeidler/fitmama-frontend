@@ -76,6 +76,12 @@
               </mat-radio-group>
         </mat-grid-tile> 
 
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <mat-form-field>
+                <input matInput type="password" [(ngModel)]="data.user.password" placeholder="lozinka">
+            </mat-form-field> 
+        </mat-grid-tile> 
+
       </mat-grid-list>
 
 </div>

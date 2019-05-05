@@ -84,6 +84,7 @@ export class UserDetailsComponent implements OnInit {
         this.user.birthDate = result.user.birthDate;
         this.user.height = result.user.height;                    
         this.user.name = this.getName(this.user);
+        this.user.password = result.user.password;
         this.updateRequest.emit(this.user);
       }
 
